@@ -20,11 +20,14 @@ import android.widget.TextView;
 import com.appodeal.ads.Appodeal;
 import com.revmob.RevMob;
 import com.revmob.RevMobAdsListener;
+import com.revmob.RevMobUserGender;
 import com.revmob.ads.banner.RevMobBanner;
+import com.revmob.ads.interstitial.RevMobFullscreen;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class QuizScreenActivity extends AppCompatActivity {
 
@@ -33,6 +36,8 @@ public class QuizScreenActivity extends AppCompatActivity {
     boolean isCurrentAffairsType=false;
     static  int adCount = 0;
     int dateType = 0;
+    private RevMobFullscreen fullscreen;
+    private boolean fullscreenIsLoaded;
 
     RevMob revmob;
     RevMobBanner banner;
@@ -70,10 +75,36 @@ public class QuizScreenActivity extends AppCompatActivity {
             @Override
             public void onRevMobSessionStarted() {
                 loadBanner(); // Cache the banner once the session is started
+                loadFullscreen(); // pre-cache it without showing it
             }
         },"586e3005e3b2a21b72a4b5d9");
 
         loadBanner();
+        loadFullscreen();
+
+
+        SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
+        boolean isProfileUpdated = sp.getBoolean("isProfileUpdated", false);
+        if(isProfileUpdated) {
+            String email = sp.getString("usr_mail", "email");
+            String age = sp.getString("usr_age", "ageStr");
+            String interestsStr = sp.getString("usr_interests", "interestsString");
+            String bday = sp.getString("usr_bday", "bDayText");
+            String page = sp.getString("usr_page", "page");
+
+
+            revmob.setUserEmail(email);
+            revmob.setUserGender(RevMobUserGender.FEMALE);
+            revmob.setUserPage(page);
+            revmob.setUserAgeRangeMax(21);
+            revmob.setUserAgeRangeMin(18);
+            revmob.setUserBirthday(new GregorianCalendar(1990, 01, 01));
+            ArrayList<String> interests = new ArrayList<String>();
+            interests.add("games");
+            interests.add("mobile");
+            interests.add("advertising");
+            revmob.setUserInterests(interests);
+        }
 
 //        SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
 //        int videoAdCount = sp.getInt("videoAdCount",0);
@@ -129,7 +160,7 @@ public class QuizScreenActivity extends AppCompatActivity {
                 if(adCount==7)
                 {
                     adCount=0;
-                    Appodeal.show(QuizScreenActivity.this, Appodeal.INTERSTITIAL);
+                    //Appodeal.show(QuizScreenActivity.this, Appodeal.INTERSTITIAL);
                 }
                 else {
                     adCount++;
@@ -149,7 +180,7 @@ public class QuizScreenActivity extends AppCompatActivity {
                 if(adCount==7)
                 {
                     adCount=0;
-                    Appodeal.show(QuizScreenActivity.this, Appodeal.INTERSTITIAL);
+                    //Appodeal.show(QuizScreenActivity.this, Appodeal.INTERSTITIAL);
                 }
                 else {
                     adCount++;
@@ -194,10 +225,12 @@ public class QuizScreenActivity extends AppCompatActivity {
     void savePageNoToSharedPrefs(int pageNo)
     {
         String prefsKey = "pageNumber";
-        if(isCurrentAffairsType)
-        {
-            
-            prefsKey = "pageNumber_CA";
+        if(isCurrentAffairsType) {
+            if (dateType == 1) {
+                prefsKey = "pageNumber_CA_DateType";
+            } else {
+                prefsKey = "pageNumber_CA";
+            }
         }
         validatePrevNextButtons(pageNo);
         SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
@@ -288,8 +321,20 @@ public class QuizScreenActivity extends AppCompatActivity {
         gkListView.setAdapter(quizListAdapter);
     }
 
+    static int revmobCount = 0;
     void displayquestionsForPage(int page)
     {
+
+        if(revmobCount >= 7)
+        {
+            if(fullscreenIsLoaded)
+            {
+                showFullscreen();
+                revmobCount=0;
+            }
+        }
+        revmobCount++;
+
         validateFavouritesBtn();
         updatePageNumber(page);
 
@@ -387,6 +432,7 @@ public class QuizScreenActivity extends AppCompatActivity {
     }
 
     int dateResourceFileIndex = -1;
+    int counter = 0;
 
     void populateDataSourceForCurrentAffairs()
     {
@@ -409,6 +455,7 @@ public class QuizScreenActivity extends AppCompatActivity {
 
         if(shouldRefreshDataList) {
             dataList = new ArrayList<>();
+            counter=0;
         }
 
         try {
@@ -418,6 +465,7 @@ public class QuizScreenActivity extends AppCompatActivity {
             final String rawGKText = new String(buffer);
 
             String[] separated = rawGKText.split("~");
+            int tmp =0;
             for(int i=0;i<separated.length; i++)
             {
                 String combinedString = separated[i];
@@ -430,7 +478,8 @@ public class QuizScreenActivity extends AppCompatActivity {
                         combinedString = combinedString.replace(",", " AD - ");
                     }
                 }
-                GKItem item = new GKItem(combinedString, "", Integer.toString(i),true, dateType);
+                GKItem item = new GKItem(combinedString, "", Integer.toString(i+counter),true, dateType);
+                tmp=i;
 
                 ArrayList<String> favouritesArr = fetchAllFavourites(true);
 
@@ -448,6 +497,8 @@ public class QuizScreenActivity extends AppCompatActivity {
 
                 dataList.add(item);
             }
+
+            counter+=tmp;
 
             if(dateType==0) {
                 int pageNo = fetchPageNumber();
@@ -578,5 +629,41 @@ public class QuizScreenActivity extends AppCompatActivity {
     {
         releaseBanner();
         loadBanner();
+    }
+
+    public void loadFullscreen() {
+        //load it with RevMob listeners to control the events fired
+        fullscreen = revmob.createFullscreen(this,  new RevMobAdsListener() {
+            @Override
+            public void onRevMobAdReceived() {
+                Log.i("RevMob", "Fullscreen loaded.");
+                fullscreenIsLoaded = true;
+
+            }
+            @Override
+            public void onRevMobAdNotReceived(String message) {
+                Log.i("RevMob", "Fullscreen not received.");
+            }
+            @Override
+            public void onRevMobAdDismissed() {
+                Log.i("RevMob", "Fullscreen dismissed.");
+            }
+            @Override
+            public void onRevMobAdClicked() {
+                Log.i("RevMob", "Fullscreen clicked.");
+            }
+            @Override
+            public void onRevMobAdDisplayed() {
+                Log.i("RevMob", "Fullscreen displayed.");
+            }
+        });
+    }
+
+    public void showFullscreen() {
+        if(fullscreenIsLoaded) {
+            fullscreen.show(); // call it wherever you want to show the fullscreen ad
+        } else {
+            Log.i("RevMob", "Ad not loaded yet.");
+        }
     }
 }
