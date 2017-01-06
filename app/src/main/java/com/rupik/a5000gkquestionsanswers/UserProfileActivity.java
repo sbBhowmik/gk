@@ -1,5 +1,6 @@
 package com.rupik.a5000gkquestionsanswers;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.StringTokenizer;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -37,15 +39,21 @@ public class UserProfileActivity extends AppCompatActivity {
         EditText interestsET = (EditText)findViewById(R.id.editText);
 
         String interestsString = interestsET.getText().toString();
+
+
+
         if(interestsString!=null)
         {
             if(interestsString.length()==0){
                 Toast.makeText(this,"Please enter your areas of interest or hobby like Games, TV, Movies, Travel, Food etc",Toast.LENGTH_LONG).show();
+                return;
             }
         }
         else {
             Toast.makeText(this,"Please enter your areas of interest or hobby like Games, TV, Movies, Travel, Food etc",Toast.LENGTH_LONG).show();
+            return;
         }
+
 
         String email = editTextEmail_Profile.getText().toString();
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())
@@ -55,11 +63,13 @@ public class UserProfileActivity extends AppCompatActivity {
             return;
         }
 
+
         String ageStr = ageET.getText().toString();
         try {
             int age = Integer.parseInt(ageStr);
             if(age<=0 || age>90) {
                 Toast.makeText(this,"Please enter a valid age",Toast.LENGTH_LONG).show();;
+                return;
             }
         }
         catch (Exception e)
@@ -69,8 +79,10 @@ public class UserProfileActivity extends AppCompatActivity {
             return;
         }
 
+
+        String bDayText;
         try {
-            String bDayText = bdET.getText().toString();
+            bDayText = bdET.getText().toString();
             String components[] = bDayText.split("/");
             if (components.length != 3) {
                 //alert: Please enter a valid birthday
@@ -94,12 +106,28 @@ public class UserProfileActivity extends AppCompatActivity {
         catch (Exception e)
         {
             Toast.makeText(this,"Please enter a valid birthday", Toast.LENGTH_LONG).show();;
+            return;
         }
 
-        SharedPreferences sp = getSharedPreferences("your_prefs",MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean("isProfileUpdated", true);
+        editor.putString("usr_mail",email);
+        editor.putString("usr_age",ageStr);
+        editor.putString("usr_interests",interestsString);
 
+        if(bDayText!=null)
+            editor.putString("usr_bday",bDayText);
+
+        String page = pageET.getText().toString();
+        if(page!=null)
+        {
+            editor.putString("usr_page",page);
+        }
+
+        editor.putBoolean("isProfileUpdated", true);
+        editor.commit();
+
+        this.finish();
     }
 
     public int getAge (int _year, int _month, int _day) {
@@ -122,5 +150,4 @@ public class UserProfileActivity extends AppCompatActivity {
         }
         return a;
     }
-
 }
