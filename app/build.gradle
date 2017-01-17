@@ -32,4 +32,5 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     compile 'com.google.android.gms:play-services-location:8.4.0'
     compile files('libs/revmob.jar')
+    compile files('libs/InMobi-6.0.4.jar')
 }
