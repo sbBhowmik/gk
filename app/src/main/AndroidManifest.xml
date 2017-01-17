@@ -254,7 +254,8 @@
             android:hardwareAccelerated="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".MainMenuActivity" />
-        <activity android:name=".UserProfileActivity"></activity>
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".MCQActivity"></activity>
     </application>
 
 </manifest>

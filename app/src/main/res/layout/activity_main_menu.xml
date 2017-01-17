@@ -13,7 +13,7 @@
         android:id="@+id/Gk_CurrentAffairs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:text="General Knowledge and Current Affairs (SET I)"
@@ -41,6 +41,18 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:text="Important Dates"
+        android:padding="10dp"
+        />
+
+    <Button
+        android:id="@+id/mcq_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/datesButton"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:text="Multiple Choice Questions"
         android:padding="10dp"
         />
 

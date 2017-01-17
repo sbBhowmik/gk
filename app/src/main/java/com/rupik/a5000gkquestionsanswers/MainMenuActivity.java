@@ -80,6 +80,15 @@ public class MainMenuActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button mcq_button = (Button)findViewById(R.id.mcq_button);
+        mcq_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenuActivity.this, MCQActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     //===Ad Methods
