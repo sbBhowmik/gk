@@ -152,6 +152,7 @@ public class QuizScreenActivity extends AppCompatActivity {
 
 
         boolean isProfileUpdated = sp.getBoolean("isProfileUpdated", false);
+        isProfileUpdated = false;
         if(isProfileUpdated) {
             String email = sp.getString("usr_mail", "email");
             String age = sp.getString("usr_age", "ageStr");
@@ -299,15 +300,15 @@ public class QuizScreenActivity extends AppCompatActivity {
                 }
 
                 SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
-                boolean isProfileUpdated = sp.getBoolean("isProfileUpdated", false);
-                if(!isProfileUpdated)
-                {
-                    Intent i = new Intent(QuizScreenActivity.this, UserProfileActivity.class);
-                    startActivity(i);
-
+//                boolean isProfileUpdated = sp.getBoolean("isProfileUpdated", false);
+//                if(!isProfileUpdated)
+//                {
+//                    Intent i = new Intent(QuizScreenActivity.this, UserProfileActivity.class);
+//                    startActivity(i);
+//
                     reloadBanner();
-                    return;
-                }
+//                    return;
+//                }
                 //
                 if(isDataFiltered)
                 {

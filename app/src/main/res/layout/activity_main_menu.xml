@@ -15,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+
         android:text="General Knowledge and Current Affairs (SET I)"
         android:padding="10dp"
         />
@@ -26,9 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Gk_CurrentAffairs"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+
         android:text="General Knowledge Questions And Answers (SET II)"
         android:padding="10dp"
         />
@@ -38,9 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/gkButton"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+
         android:text="Important Dates"
         android:padding="10dp"
         />
@@ -50,9 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/datesButton"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+
         android:text="Multiple Choice Questions"
         android:padding="10dp"
         />

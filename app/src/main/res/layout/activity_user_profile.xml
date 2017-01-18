@@ -14,7 +14,7 @@
         android:id="@+id/title_profile_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please update your profile information to access this feature. "
+        android:text="Please update your profile info "
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="15sp"
@@ -42,7 +42,7 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:layout_below="@+id/subtitle_profile_tv"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/editTextEmail_Profile"
         android:hint="Please Enter Your Email Address"
         android:layout_alignParentLeft="true"
@@ -68,14 +68,14 @@
             android:layout_height="wrap_content"
 
             android:checked="true"
-            android:text="male" />
+            android:text="Male" />
 
         <RadioButton
             android:id="@+id/radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="female" />
+            android:text="Female" />
     </RadioGroup>
 
     <EditText
@@ -86,7 +86,7 @@
         android:layout_centerVertical="true"
         android:id="@+id/editText2"
         android:layout_alignParentRight="true"
-
+        android:layout_below="@+id/radioGroup1"
         android:layout_alignParentLeft="true"
 
         android:gravity="center_vertical|center_horizontal"

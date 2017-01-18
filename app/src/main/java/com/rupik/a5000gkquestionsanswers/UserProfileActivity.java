@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -109,17 +110,28 @@ public class UserProfileActivity extends AppCompatActivity {
             return;
         }
 
+        RadioButton maleRadioBtn = (RadioButton)findViewById(R.id.radio0);
+        RadioButton femaleRadioBtn = (RadioButton)findViewById(R.id.radio1);
+
+        boolean isMale = false;
+        if(maleRadioBtn.isChecked())
+        {
+            isMale = true;
+        }
+
+
         SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("usr_mail",email);
         editor.putString("usr_age",ageStr);
         editor.putString("usr_interests",interestsString);
+        editor.putBoolean("usr_gender", isMale);
 
         if(bDayText!=null)
             editor.putString("usr_bday",bDayText);
 
         String page = pageET.getText().toString();
-        if(page!=null)
+        if(page.length()>0)
         {
             editor.putString("usr_page",page);
         }

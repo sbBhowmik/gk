@@ -63,8 +63,7 @@ D. Land Acquisition Act 1894"
                     android:id="@+id/radio_A"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:checked="true"
+                    android:layout_marginLeft="-27dp"
                     android:text="A    " />
 
                 <ImageView
@@ -80,7 +79,7 @@ D. Land Acquisition Act 1894"
                     android:id="@+id/radioB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_marginLeft="-27dp"
                     android:text="B    " />
 
                 <ImageView
@@ -97,7 +96,7 @@ D. Land Acquisition Act 1894"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:checked="true"
+                    android:layout_marginLeft="-27dp"
                     android:text="C    " />
 
                 <ImageView
@@ -112,7 +111,7 @@ D. Land Acquisition Act 1894"
                     android:id="@+id/radio_D"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_marginLeft="-27dp"
                     android:text="D    " />
 
 
