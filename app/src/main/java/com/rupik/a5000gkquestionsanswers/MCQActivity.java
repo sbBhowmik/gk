@@ -50,28 +50,81 @@ public class MCQActivity extends AppCompatActivity {
     }
 
     static  int revmobCount = 0;
+    String adTypeString;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mcq);
 
-        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
 
-//        revmob = RevMob.startWithListener(this, new RevMobAdsListener() {
-//            @Override
-//            public void onRevMobSessionStarted() {
-//                loadBanner(); // Cache the banner once the session is started
-//                loadFullscreen(); // pre-cache it without showing it
-//            }
-//        },"586e3005e3b2a21b72a4b5d9");
-//
-//        loadBanner();
-//        loadFullscreen();
+        SharedPreferences sp = getSharedPreferences("your_prefs", MODE_PRIVATE);
+        adTypeString = sp.getString("adType","appodeal");
 
-        InMobiSdk.init(this, "c18237e3971d4c10b346b1f5ecdd9cbd"); //'this' is used specify context
 
-        InMobiBanner banner = (InMobiBanner)findViewById(R.id.banner);
-        banner.load();
+        if(adTypeString.contains("appodeal")) {
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }
+
+        if(adTypeString.contains("revmob")) {
+            revmob = RevMob.startWithListener(this, new RevMobAdsListener() {
+                @Override
+                public void onRevMobSessionStarted() {
+                    loadBanner(); // Cache the banner once the session is started
+                    loadFullscreen(); // pre-cache it without showing it
+                }
+            }, "586e3005e3b2a21b72a4b5d9");
+
+            loadBanner();
+            loadFullscreen();
+        }
+
+        if(adTypeString.contains("inmobi")) {
+            InMobiSdk.init(this, "c18237e3971d4c10b346b1f5ecdd9cbd"); //'this' is used specify context
+            InMobiBanner banner = (InMobiBanner) findViewById(R.id.banner);
+            banner.setRefreshInterval(30);
+            banner.load();
+
+            InMobiSdk.init(this, "9d961a7d067f485a8c512f0389f7cab9"); //'this' is used specify context
+        }
+
+            // ‘this’ is used to specify context, replace it with the appropriate context as needed.
+            final InMobiInterstitial interstitial = new InMobiInterstitial(this, 1485272359976L, new InMobiInterstitial.InterstitialAdListener() {
+                @Override
+                public void onAdRewardActionCompleted(InMobiInterstitial ad, Map rewards) {
+                }
+
+                @Override
+                public void onAdDisplayed(InMobiInterstitial ad) {
+                }
+
+                @Override
+                public void onAdDismissed(InMobiInterstitial ad) {
+                }
+
+                @Override
+                public void onAdInteraction(InMobiInterstitial ad, Map params) {
+                }
+
+                @Override
+                public void onAdLoadSucceeded(final InMobiInterstitial ad) {
+                }
+
+                @Override
+                public void onAdLoadFailed(InMobiInterstitial ad, InMobiAdRequestStatus requestStatus) {
+                }
+
+                @Override
+                public void onUserLeftApplication(InMobiInterstitial ad) {
+                }
+            });
+
+        if(adTypeString.contains("inmobi")) {
+            interstitial.load();
+        }
+
+
+
 
         parseMCQRawFile();
 
@@ -82,12 +135,25 @@ public class MCQActivity extends AppCompatActivity {
                 page -= 1;
                 displayMCQ(page);
                 reloadBanner();
-                if(revmobCount >= 7)
+                if(revmobCount >= 9)
                 {
-                    if(fullscreenIsLoaded)
-                    {
-                        showFullscreen();
-                        revmobCount=0;
+                    if(adTypeString.contains("appodeal")) {
+                        Appodeal.show(MCQActivity.this, Appodeal.INTERSTITIAL);
+                        revmobCount = 0;
+                    }
+                    if(adTypeString.contains("inmobi")) {
+                        if (interstitial.isReady()) {
+                            interstitial.show();
+                            revmobCount=0;
+                            interstitial.load();
+                        }
+                    }
+
+                    if(adTypeString.contains("revmob")) {
+                        if (fullscreenIsLoaded) {
+                            showFullscreen();
+                            revmobCount = 0;
+                        }
                     }
                 }
                 revmobCount++;
@@ -101,12 +167,26 @@ public class MCQActivity extends AppCompatActivity {
                 page += 1;
                 displayMCQ(page);
                 reloadBanner();
-                if(revmobCount >= 7)
+
+                if(revmobCount >= 9)
                 {
-                    if(fullscreenIsLoaded)
-                    {
-                        showFullscreen();
-                        revmobCount=0;
+                    if(adTypeString.contains("appodeal")) {
+                        Appodeal.show(MCQActivity.this, Appodeal.INTERSTITIAL);
+                        revmobCount = 0;
+                    }
+                    if(adTypeString.contains("inmobi")) {
+                        if (interstitial.isReady()) {
+                            interstitial.show();
+                            revmobCount = 0;
+                            interstitial.load();
+                        }
+                    }
+
+                    if(adTypeString.contains("revmob")) {
+                        if (fullscreenIsLoaded) {
+                            showFullscreen();
+                            revmobCount = 0;
+                        }
                     }
                 }
                 revmobCount++;
@@ -335,8 +415,18 @@ public class MCQActivity extends AppCompatActivity {
 
     public void reloadBanner()
     {
-        releaseBanner();
-        loadBanner();
+        if(adTypeString.contains("inmobi")) {
+            InMobiBanner banner = (InMobiBanner) findViewById(R.id.banner);
+            banner.setRefreshInterval(30);
+            banner.load();
+        }
+        if(adTypeString.contains("appodeal")) {
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }
+        if(adTypeString.contains("revmob")) {
+            releaseBanner();
+            loadBanner();
+        }
     }
 
     public void loadFullscreen() {

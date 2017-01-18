@@ -86,9 +86,6 @@
             android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
 
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
@@ -291,8 +288,28 @@
 
         <!--Required for Google Play Services-->
 
+
+
+        <!--Required Receiver for enhanced targeting for better ads.-->
+
+        <receiver android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.inmobi.share.id" />
+            </intent-filter>
+        </receiver>
+
+        <service android:enabled="true" android:name="com.inmobi.signals.activityrecognition.ActivityRecognitionManager" />
+
+        <!--Required for Google Play Services-->
+
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
+
+        <!--<meta-data android:name="com.google.android.gms.version"-->
+            <!--android:value="7895000"/>-->
+
 
     </application>
 

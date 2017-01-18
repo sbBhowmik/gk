@@ -8,11 +8,22 @@
 
     tools:context="com.rupik.a5000gkquestionsanswers.MCQActivity">
 
-    <TextView
-        android:id="@+id/mcqQuestionTV"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name the Act, which is proposed to
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/prevMCQQuestionBtn"
+        android:layout_marginBottom="40dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/mcqQuestionTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name the Act, which is proposed to
 replaced by The Land Acquisition,
 Rehabilitation and Resettlement Bill
 2012?
@@ -20,106 +31,113 @@ A. Land Acquisition Act 1900
 B. Land Acquisition Act 1910
 C. Land Acquisition Act 1945
 D. Land Acquisition Act 1894"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="serif"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center_horizontal"
-        />
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="serif"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center_horizontal"
+                />
 
-    <RadioGroup
-        android:id="@+id/mcqRadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/mcqQuestionTV"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="20dp">
+            <RadioGroup
+                android:id="@+id/mcqRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mcqQuestionTV"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp">
 
-        <ImageView
-            android:id="@+id/answerA"
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:src="@drawable/red_cross"
-            />
+                <ImageView
+                    android:id="@+id/answerA"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:src="@drawable/red_cross"
+                    />
 
-    <RadioButton
-        android:id="@+id/radio_A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+                <RadioButton
+                    android:id="@+id/radio_A"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        android:checked="true"
-        android:text="A    " />
+                    android:checked="true"
+                    android:text="A    " />
 
-        <ImageView
-            android:id="@+id/answerB"
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:src="@drawable/red_cross"
-            />
+                <ImageView
+                    android:id="@+id/answerB"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:src="@drawable/red_cross"
+                    />
 
-    <RadioButton
-        android:id="@+id/radioB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+                <RadioButton
+                    android:id="@+id/radioB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        android:text="B    " />
+                    android:text="B    " />
 
-        <ImageView
-            android:id="@+id/answerC"
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:src="@drawable/red_cross"
-            />
+                <ImageView
+                    android:id="@+id/answerC"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:src="@drawable/red_cross"
+                    />
 
-    <RadioButton
-        android:id="@+id/radio_C"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+                <RadioButton
+                    android:id="@+id/radio_C"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        android:checked="true"
-        android:text="C    " />
+                    android:checked="true"
+                    android:text="C    " />
 
-        <ImageView
-            android:id="@+id/answerD"
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:src="@drawable/green_tick"
-            />
-    <RadioButton
-        android:id="@+id/radio_D"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/answerD"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:src="@drawable/green_tick"
+                    />
+                <RadioButton
+                    android:id="@+id/radio_D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        android:text="D    " />
+                    android:text="D    " />
 
 
-        </RadioGroup>
+            </RadioGroup>
 
-    <Button
-        android:id="@+id/mcqAnswersButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/mcqRadioGroup"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
-        android:text="Show Answer"
-        android:fontFamily="serif"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:padding="15dp"
-        />
+            <Button
+                android:id="@+id/mcqAnswersButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mcqRadioGroup"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:text="Show Answer"
+                android:fontFamily="serif"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:padding="15dp"
+                />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
 
     <Button
         android:id="@+id/prevMCQQuestionBtn"

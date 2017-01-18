@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,9 +50,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String appKey = "6dcfe14a2822b69dc364802ac2c1d81479f642262c221724";
-        Appodeal.initialize(this, appKey, Appodeal.BANNER | Appodeal.INTERSTITIAL);
-        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        SharedPreferences sp = getSharedPreferences("your_prefs", MODE_PRIVATE);
+        String adTypeString = sp.getString("adType","inmobi");
+        if(adTypeString.contains("appodeal")) {
+            String appKey = "6dcfe14a2822b69dc364802ac2c1d81479f642262c221724";
+            Appodeal.initialize(this, appKey, Appodeal.BANNER | Appodeal.INTERSTITIAL);
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }
 
         revmob = RevMob.startWithListener(this, new RevMobAdsListener() {
             @Override

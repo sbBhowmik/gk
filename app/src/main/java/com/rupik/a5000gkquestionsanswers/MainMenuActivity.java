@@ -1,6 +1,8 @@
 package com.rupik.a5000gkquestionsanswers;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,10 +15,21 @@ import com.revmob.RevMob;
 import com.revmob.RevMobAdsListener;
 import com.revmob.ads.banner.RevMobBanner;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import java.util.Map;
+import com.inmobi.ads.*;
+import com.inmobi.sdk.*;
+
 public class MainMenuActivity extends AppCompatActivity {
 
     RevMob revmob;
     RevMobBanner banner;
+    String adJsonString = "";
 
     @Override
     public void  onPause()
@@ -34,21 +47,84 @@ public class MainMenuActivity extends AppCompatActivity {
         loadBanner();
     }
 
+    void startDisplayingAds()
+    {
+        if(adJsonString.contains("appodeal")) {
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }
+
+        if(adJsonString.contains("revmob")) {
+            revmob = RevMob.startWithListener(this, new RevMobAdsListener() {
+                @Override
+                public void onRevMobSessionStarted() {
+                    loadBanner(); // Cache the banner once the session is started
+                }
+            }, "586e3005e3b2a21b72a4b5d9");
+
+            loadBanner();
+        }
+
+        if(adJsonString.contains("inmobi")) {
+            InMobiSdk.init(this, "c18237e3971d4c10b346b1f5ecdd9cbd"); //'this' is used specify context
+            InMobiBanner banner = (InMobiBanner) findViewById(R.id.banner);
+            banner.setRefreshInterval(30);
+            banner.load();
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        //==========Fetch Ad type to display===========
+        //https://quarkbackend.com/getfile/sohambhowmik/gk-ad
 
-        revmob = RevMob.startWithListener(this, new RevMobAdsListener() {
+        AsyncTask.execute(new Runnable() {
             @Override
-            public void onRevMobSessionStarted() {
-                loadBanner(); // Cache the banner once the session is started
-            }
-        },"586e3005e3b2a21b72a4b5d9");
+            public void run() {
+                try {
 
-        loadBanner();
+                    String urlStr = "https://quarkbackend.com/getfile/sohambhowmik/gk-ad";
+
+
+                    // Create a URL for the desired page
+                    URL url = new URL(urlStr);
+
+                    // Read all the text returned by the server
+                    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+                    String str;
+
+                    while ((str = in.readLine()) != null) {
+                        adJsonString = adJsonString+str;
+                    }
+                    in.close();
+
+
+                } catch (MalformedURLException e) {
+                    Log.d("MalformedURLException", e.getLocalizedMessage());
+                } catch (IOException e) {
+                    Log.d("IOERR", e.getLocalizedMessage());
+                }
+                finally {
+                    MainMenuActivity.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            SharedPreferences sp = getSharedPreferences("your_prefs", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sp.edit();
+
+                            editor.putString("adType", adJsonString);
+
+                            editor.commit();
+                            startDisplayingAds();
+                        }
+                    });
+
+                }
+            }
+        });
+
+        ///-------------------
 
         Button gkButton = (Button)findViewById(R.id.gkButton);
         gkButton.setOnClickListener(new View.OnClickListener() {
@@ -94,21 +170,25 @@ public class MainMenuActivity extends AppCompatActivity {
     //===Ad Methods
 
     public void loadBanner(){
-        banner = revmob.preLoadBanner(this, new RevMobAdsListener(){
-            @Override
-            public void onRevMobAdReceived() {
-                showBanner();
-                Log.i("RevMob","Banner Ready to be Displayed"); //At this point, the banner is ready to be displayed.
-            }
-            @Override
-            public void onRevMobAdNotReceived(String message) {
-                Log.i("RevMob","Banner Not Failed to Load");
-            }
-            @Override
-            public void onRevMobAdDisplayed() {
-                Log.i("RevMob","Banner Displayed");
-            }
-        });
+        if(revmob!=null) {
+            banner = revmob.preLoadBanner(this, new RevMobAdsListener() {
+                @Override
+                public void onRevMobAdReceived() {
+                    showBanner();
+                    Log.i("RevMob", "Banner Ready to be Displayed"); //At this point, the banner is ready to be displayed.
+                }
+
+                @Override
+                public void onRevMobAdNotReceived(String message) {
+                    Log.i("RevMob", "Banner Not Failed to Load");
+                }
+
+                @Override
+                public void onRevMobAdDisplayed() {
+                    Log.i("RevMob", "Banner Displayed");
+                }
+            });
+        }
     }
 
     public void showBanner(){
@@ -125,6 +205,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void releaseBanner(){
-        banner.release();
+        if(banner!=null)
+            banner.release();
     }
 }

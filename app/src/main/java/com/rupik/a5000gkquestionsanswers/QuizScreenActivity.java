@@ -29,6 +29,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import java.util.Map;
+import com.inmobi.ads.*;
+import com.inmobi.sdk.*;
+
 public class QuizScreenActivity extends AppCompatActivity {
 
     ArrayList<GKItem> dataList;
@@ -42,6 +46,7 @@ public class QuizScreenActivity extends AppCompatActivity {
     RevMob revmob;
     RevMobBanner banner;
 
+    String adTypeString;
     @Override
     public void  onPause()
     {
@@ -54,8 +59,18 @@ public class QuizScreenActivity extends AppCompatActivity {
     public void onResume()
     {
         super.onResume();
-        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
-        loadBanner();
+        if(adTypeString.contains("appodeal")) {
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }
+        if(adTypeString.contains("revmob")) {
+            loadBanner();
+        }
+
+        if(adTypeString.contains("inmobi")) {
+            InMobiBanner banner = (InMobiBanner) findViewById(R.id.banner);
+            banner.setRefreshInterval(30);
+            banner.load();
+        }
     }
 
 //    @Override
@@ -69,21 +84,73 @@ public class QuizScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_screen);
 
-        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        SharedPreferences sp = getSharedPreferences("your_prefs", MODE_PRIVATE);
+        adTypeString = sp.getString("adType","appodeal");
 
-        revmob = RevMob.startWithListener(this, new RevMobAdsListener() {
+
+        if(adTypeString.contains("appodeal")) {
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }
+
+        if(adTypeString.contains("revmob")) {
+            revmob = RevMob.startWithListener(this, new RevMobAdsListener() {
+                @Override
+                public void onRevMobSessionStarted() {
+                    loadBanner(); // Cache the banner once the session is started
+                    loadFullscreen(); // pre-cache it without showing it
+                }
+            }, "586e3005e3b2a21b72a4b5d9");
+
+            loadBanner();
+            loadFullscreen();
+        }
+
+        if(adTypeString.contains("inmobi")) {
+            InMobiSdk.init(this, "c18237e3971d4c10b346b1f5ecdd9cbd"); //'this' is used specify context
+            InMobiBanner banner = (InMobiBanner) findViewById(R.id.banner);
+            banner.setRefreshInterval(30);
+            banner.load();
+
+            InMobiSdk.init(this, "9d961a7d067f485a8c512f0389f7cab9"); //'this' is used specify context
+        }
+
+        final InMobiInterstitial interstitial = new InMobiInterstitial(this, 1485272359976L, new InMobiInterstitial.InterstitialAdListener() {
             @Override
-            public void onRevMobSessionStarted() {
-                loadBanner(); // Cache the banner once the session is started
-                loadFullscreen(); // pre-cache it without showing it
+            public void onAdRewardActionCompleted(InMobiInterstitial ad, Map rewards) {
             }
-        },"586e3005e3b2a21b72a4b5d9");
 
-        loadBanner();
-        loadFullscreen();
+            @Override
+            public void onAdDisplayed(InMobiInterstitial ad) {
+            }
+
+            @Override
+            public void onAdDismissed(InMobiInterstitial ad) {
+            }
+
+            @Override
+            public void onAdInteraction(InMobiInterstitial ad, Map params) {
+            }
+
+            @Override
+            public void onAdLoadSucceeded(final InMobiInterstitial ad) {
+            }
+
+            @Override
+            public void onAdLoadFailed(InMobiInterstitial ad, InMobiAdRequestStatus requestStatus) {
+            }
+
+            @Override
+            public void onUserLeftApplication(InMobiInterstitial ad) {
+            }
+        });
+
+        if(adTypeString.contains("inmobi")) {
+            interstitial.load();
+        }
+
+        //====Ads====End ====
 
 
-        SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
         boolean isProfileUpdated = sp.getBoolean("isProfileUpdated", false);
         if(isProfileUpdated) {
             String email = sp.getString("usr_mail", "email");
@@ -157,10 +224,23 @@ public class QuizScreenActivity extends AppCompatActivity {
                 savePageNoToSharedPrefs(pageNo);
                 displayquestionsForPage(pageNo);
 
-                if(adCount==7)
+                if(adTypeString.contains("inmobi")) {
+                    InMobiBanner banner = (InMobiBanner) findViewById(R.id.banner);
+                    banner.setRefreshInterval(30);
+                    banner.load();
+                }
+
+                if(adCount==9)
                 {
                     adCount=0;
-                    //Appodeal.show(QuizScreenActivity.this, Appodeal.INTERSTITIAL);
+                    if(adTypeString.contains("inmobi")) {
+                        if (interstitial.isReady())
+                            interstitial.show();
+                    }
+
+                    if(adTypeString.contains("appodeal")) {
+                        Appodeal.show(QuizScreenActivity.this, Appodeal.INTERSTITIAL);
+                    }
                 }
                 else {
                     adCount++;
@@ -177,10 +257,24 @@ public class QuizScreenActivity extends AppCompatActivity {
                 savePageNoToSharedPrefs(pageNo);
                 displayquestionsForPage(pageNo);
 
-                if(adCount==7)
+                if(adTypeString.contains("inmobi")) {
+                    InMobiBanner banner = (InMobiBanner) findViewById(R.id.banner);
+                    banner.setRefreshInterval(30);
+                    banner.load();
+                }
+
+                if(adCount==9)
                 {
                     adCount=0;
-                    //Appodeal.show(QuizScreenActivity.this, Appodeal.INTERSTITIAL);
+
+                    if(adTypeString.contains("inmobi")) {
+                        if (interstitial.isReady())
+                            interstitial.show();
+                    }
+
+                    if(adTypeString.contains("appodeal")) {
+                        Appodeal.show(QuizScreenActivity.this, Appodeal.INTERSTITIAL);
+                    }
                 }
                 else {
                     adCount++;
@@ -193,6 +287,17 @@ public class QuizScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //
+
+                if(adTypeString.contains("inmobi")) {
+                    InMobiBanner banner = (InMobiBanner) findViewById(R.id.banner);
+                    banner.setRefreshInterval(30);
+                    banner.load();
+                }
+
+                if(adTypeString.contains("appodeal")) {
+                    Appodeal.show(QuizScreenActivity.this, Appodeal.BANNER_BOTTOM);
+                }
+
                 SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
                 boolean isProfileUpdated = sp.getBoolean("isProfileUpdated", false);
                 if(!isProfileUpdated)
@@ -591,6 +696,10 @@ public class QuizScreenActivity extends AppCompatActivity {
     //===Ad Methods
 
     public void loadBanner(){
+        if(revmob==null)
+        {
+            return;
+        }
         banner = revmob.preLoadBanner(this, new RevMobAdsListener(){
             @Override
             public void onRevMobAdReceived() {
@@ -622,17 +731,32 @@ public class QuizScreenActivity extends AppCompatActivity {
     }
 
     public void releaseBanner(){
-        banner.release();
+        if(banner!=null)
+         banner.release();
     }
 
     public void reloadBanner()
     {
-        releaseBanner();
-        loadBanner();
+        if(adTypeString.contains("appodeal")) {
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }
+        if(adTypeString.contains("inmobi")) {
+            InMobiBanner banner = (InMobiBanner) findViewById(R.id.banner);
+            banner.setRefreshInterval(30);
+            banner.load();
+        }
+        if(adTypeString.contains("revmob")) {
+            releaseBanner();
+            loadBanner();
+        }
     }
 
     public void loadFullscreen() {
         //load it with RevMob listeners to control the events fired
+        if(revmob==null)
+        {
+            return;
+        }
         fullscreen = revmob.createFullscreen(this,  new RevMobAdsListener() {
             @Override
             public void onRevMobAdReceived() {
