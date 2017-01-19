@@ -1,11 +1,13 @@
 package com.rupik.a5000gkquestionsanswers;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -72,11 +74,28 @@ public class MainMenuActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item )
+    {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                break;
+        }
+
+        return  true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        //====Back Button===
+        ActionBar actionBar = getActionBar();
+        if(actionBar!=null)
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        //===
+
 
         //==========Fetch Ad type to display===========
         //https://quarkbackend.com/getfile/sohambhowmik/gk-ad

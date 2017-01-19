@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.appodeal.ads.Appodeal;
@@ -299,6 +300,15 @@ public class MCQActivity extends AppCompatActivity {
 
     void hideAnswers()
     {
+        RadioButton radioA = (RadioButton)findViewById(R.id.radio_A);
+        radioA.setChecked(false);
+        RadioButton radioB = (RadioButton)findViewById(R.id.radioB);
+        radioB.setChecked(false);
+        RadioButton radio_C = (RadioButton)findViewById(R.id.radio_C);
+        radio_C.setChecked(false);
+        RadioButton radio_D = (RadioButton)findViewById(R.id.radio_D);
+        radio_D.setChecked(false);
+
         ImageView answerA = (ImageView)findViewById(R.id.answerA);
         answerA.setVisibility(View.INVISIBLE);
         ImageView answerB = (ImageView)findViewById(R.id.answerB);

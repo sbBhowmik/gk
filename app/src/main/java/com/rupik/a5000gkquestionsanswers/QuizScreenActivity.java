@@ -610,7 +610,7 @@ public class QuizScreenActivity extends AppCompatActivity {
                 int pageNo = fetchPageNumber();
                 displayquestionsForPage(pageNo);
             }
-            else if(dateType==1 && dateResourceFileIndex==3)
+            else if(dateType==1 && dateResourceFileIndex>3)
             {
                 int pageNo = fetchPageNumber();
                 displayquestionsForPage(pageNo);

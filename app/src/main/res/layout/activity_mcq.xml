@@ -5,7 +5,7 @@
     android:id="@+id/activity_mcq"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/bg_rect_2"
     tools:context="com.rupik.a5000gkquestionsanswers.MCQActivity">
 
     <ScrollView
@@ -32,10 +32,10 @@ B. Land Acquisition Act 1910
 C. Land Acquisition Act 1945
 D. Land Acquisition Act 1894"
                 android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="15sp"
-                android:layout_marginTop="10dp"
+                android:textColor="#003022"
                 android:fontFamily="serif"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center_horizontal"
@@ -54,7 +54,7 @@ D. Land Acquisition Act 1894"
                     android:id="@+id/answerA"
                     android:layout_width="20dp"
                     android:layout_height="30dp"
-                    android:paddingTop="5dp"
+                    android:paddingTop="7dp"
                     android:paddingBottom="5dp"
                     android:src="@drawable/red_cross"
                     />
@@ -64,13 +64,17 @@ D. Land Acquisition Act 1894"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="-27dp"
+                    android:textStyle="bold"
+                    android:textColor="#003022"
+                    android:fontFamily="serif"
+                    android:textSize="18dp"
                     android:text="A    " />
 
                 <ImageView
                     android:id="@+id/answerB"
                     android:layout_width="20dp"
                     android:layout_height="30dp"
-                    android:paddingTop="5dp"
+                    android:paddingTop="7dp"
                     android:paddingBottom="5dp"
                     android:src="@drawable/red_cross"
                     />
@@ -80,13 +84,17 @@ D. Land Acquisition Act 1894"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="-27dp"
+                    android:textStyle="bold"
+                    android:textColor="#003022"
+                    android:fontFamily="serif"
+                    android:textSize="18dp"
                     android:text="B    " />
 
                 <ImageView
                     android:id="@+id/answerC"
                     android:layout_width="20dp"
                     android:layout_height="30dp"
-                    android:paddingTop="5dp"
+                    android:paddingTop="7dp"
                     android:paddingBottom="5dp"
                     android:src="@drawable/red_cross"
                     />
@@ -103,8 +111,12 @@ D. Land Acquisition Act 1894"
                     android:id="@+id/answerD"
                     android:layout_width="20dp"
                     android:layout_height="30dp"
-                    android:paddingTop="5dp"
+                    android:paddingTop="7dp"
                     android:paddingBottom="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#003022"
+                    android:fontFamily="serif"
+                    android:textSize="18dp"
                     android:src="@drawable/green_tick"
                     />
                 <RadioButton
@@ -112,6 +124,10 @@ D. Land Acquisition Act 1894"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="-27dp"
+                    android:textStyle="bold"
+                    android:textColor="#003022"
+                    android:fontFamily="serif"
+                    android:textSize="18dp"
                     android:text="D    " />
 
 
@@ -125,10 +141,11 @@ D. Land Acquisition Act 1894"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
                 android:text="Show Answer"
-                android:fontFamily="serif"
-                android:textColor="#000000"
                 android:textStyle="bold"
+                android:textColor="#003022"
+                android:fontFamily="serif"
                 android:padding="15dp"
+                android:background="@drawable/bg_rect"
                 />
 
 
@@ -146,9 +163,11 @@ D. Land Acquisition Act 1894"
         android:layout_marginBottom="50dp"
         android:layout_marginLeft="20dp"
         android:text="Previous"
-        android:fontFamily="serif"
-        android:textColor="#000000"
         android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:padding="15dp"
+        android:background="@drawable/bg_rect"
         />
 
     <Button
@@ -160,9 +179,11 @@ D. Land Acquisition Act 1894"
         android:layout_marginBottom="50dp"
         android:layout_marginRight="20dp"
         android:text="Next"
-        android:fontFamily="serif"
-        android:textColor="#000000"
         android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:padding="15dp"
+        android:background="@drawable/bg_rect"
         />
 
     <LinearLayout android:id="@+id/bannerLayout"

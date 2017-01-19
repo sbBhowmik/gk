@@ -8,24 +8,33 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_rect_2"
     tools:context="com.rupik.a5000gkquestionsanswers.MainMenuActivity">
 
     <Button
         android:id="@+id/Gk_CurrentAffairs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_marginTop="10dp"
-
+        android:background="@drawable/bg_rect"
         android:text="General Knowledge and Current Affairs (SET I)"
+        android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:textSize="15dp"
         android:padding="10dp"
         />
 
     <Button
         android:id="@+id/gkButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_below="@+id/Gk_CurrentAffairs"
-
+        android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:textSize="15dp"
+        android:background="@drawable/bg_rect"
         android:text="General Knowledge Questions And Answers (SET II)"
         android:padding="10dp"
         />
@@ -33,20 +42,28 @@
     <Button
         android:id="@+id/datesButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_below="@+id/gkButton"
-
+        android:background="@drawable/bg_rect"
         android:text="Important Dates"
+        android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:textSize="15dp"
         android:padding="10dp"
         />
 
     <Button
         android:id="@+id/mcq_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_below="@+id/datesButton"
-
+        android:background="@drawable/bg_rect"
         android:text="Multiple Choice Questions"
+        android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:textSize="15dp"
         android:padding="10dp"
         />
 

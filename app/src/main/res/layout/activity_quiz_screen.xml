@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_rect_2"
     tools:context="com.rupik.a5000gkquestionsanswers.QuizScreenActivity">
 
     <TextView
@@ -15,6 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Page 1"
+        android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:textSize="18dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="64dp"
         android:layout_alignParentBottom="true"
@@ -26,12 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="General Knowledge"
-        android:textColor="#000000"
         android:textAllCaps="true"
+        android:textSize="19sp"
         android:textStyle="bold"
-        android:textSize="17sp"
-        android:layout_marginTop="5dp"
+        android:textColor="#053838"
+        android:fontFamily="serif"
         android:gravity="center"
+        android:visibility="visible"
         />
 
     <ImageButton
@@ -43,6 +49,7 @@
         android:background="@null"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
+        android:layout_alignBottom="@+id/titleTV"
         />
 
     <ListView
@@ -51,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleTV"
         android:layout_alignBottom="@+id/pageNoTextView"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         >
     </ListView>
 
@@ -61,6 +68,11 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/pageNoTextView"
         android:text="Previous"
+        android:background="@drawable/bg_rect"
+        android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:textSize="15dp"
         android:layout_marginLeft="5dp"
         />
 
@@ -70,6 +82,11 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/pageNoTextView"
         android:text="Next"
+        android:background="@drawable/bg_rect"
+        android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:textSize="15dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"
         />

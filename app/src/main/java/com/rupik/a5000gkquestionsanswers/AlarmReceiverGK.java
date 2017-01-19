@@ -27,13 +27,17 @@ public class AlarmReceiverGK extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;
-        Intent notificationIntent = new Intent(context, MainActivity.class);
+        Intent notificationIntent = new Intent(context, QuizScreenActivity.class);
+        notificationIntent.putExtra("isCurrentAffairsType",false);
+
+        Intent notificationIntent_MainMenu = new Intent(context, MainMenuActivity.class);
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(QuizScreenActivity.class);
+//        stackBuilder.addParentStack(QuizScreenActivity.class);
+        stackBuilder.addNextIntent(notificationIntent_MainMenu);
         stackBuilder.addNextIntent(notificationIntent);
 
-        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
@@ -61,7 +65,7 @@ public class AlarmReceiverGK extends BroadcastReceiver {
         PendingIntent broadcast = PendingIntent.getBroadcast(context, 19890, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.SECOND, 3600);
+        cal.add(Calendar.SECOND, 15);
 //        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), broadcast);
         if (android.os.Build.VERSION.SDK_INT >= 19) {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), broadcast);

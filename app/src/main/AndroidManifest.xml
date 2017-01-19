@@ -48,7 +48,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuizScreenActivity" />
+        <activity android:name=".QuizScreenActivity"
+            android:parentActivityName=".MainMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainMenuActivity"/>
+            </activity>
 
         <receiver android:name=".AlarmReceiverGK">
             <intent-filter>
