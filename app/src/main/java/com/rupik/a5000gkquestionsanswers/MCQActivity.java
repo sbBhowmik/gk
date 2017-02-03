@@ -2,13 +2,16 @@ package com.rupik.a5000gkquestionsanswers;
 
 import android.content.SharedPreferences;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -18,12 +21,22 @@ import com.revmob.RevMobAdsListener;
 import com.revmob.ads.banner.RevMobBanner;
 import com.revmob.ads.interstitial.RevMobFullscreen;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import java.util.Map;
 import com.inmobi.ads.*;
 import com.inmobi.sdk.*;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 //https://quarkbackend.com/getfile/sohambhowmik/gk-ad
 public class MCQActivity extends AppCompatActivity {
 
@@ -33,6 +46,10 @@ public class MCQActivity extends AppCompatActivity {
     RevMobBanner banner;
     private RevMobFullscreen fullscreen;
     private boolean fullscreenIsLoaded;
+    boolean isQuestionsType=false;
+
+    ArrayList<MCQItem> answersList = new ArrayList<>();
+    int score;
 
     @Override
     public void  onPause()
@@ -126,8 +143,15 @@ public class MCQActivity extends AppCompatActivity {
 
 
 
+        isQuestionsType = this.getIntent().getExtras().getBoolean("isQuestionsType");
 
-        parseMCQRawFile();
+        setupUI();
+        if(!isQuestionsType) {
+            parseMCQRawFile();
+        }
+        else {
+            fetchMockTest();
+        }
 
         Button prevMCQQuestionBtn = (Button)findViewById(R.id.prevMCQQuestionBtn);
         prevMCQQuestionBtn.setOnClickListener(new View.OnClickListener() {
@@ -165,6 +189,12 @@ public class MCQActivity extends AppCompatActivity {
         nextMCQQuestionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(isQuestionsType)
+                {
+                    validateAnswers();
+                }
+
                 page += 1;
                 displayMCQ(page);
                 reloadBanner();
@@ -201,6 +231,131 @@ public class MCQActivity extends AppCompatActivity {
                 showAnswers();
             }
         });
+    }
+
+    String mockTestJSON = "";
+    void fetchMockTest()
+    {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    String urlStr = "https://quarkbackend.com/getfile/sohambhowmik/gkmocktest";
+
+                    // Create a URL for the desired page
+                    URL url = new URL(urlStr);
+
+                    // Read all the text returned by the server
+                    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+                    String str;
+
+                    while ((str = in.readLine()) != null) {
+                        mockTestJSON = mockTestJSON+str;
+                    }
+                    in.close();
+
+
+                } catch (MalformedURLException e) {
+                    Log.d("MalformedURLException", e.getLocalizedMessage());
+                } catch (IOException e) {
+                    Log.d("IOERR", e.getLocalizedMessage());
+                }
+                finally {
+                    MCQActivity.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            parseMockTestJson();
+                        }
+                    });
+
+                }
+            }
+        });
+    }
+
+    String noOfQuestionsinMockTest="";
+    void parseMockTestJson()
+    {
+        mcqDataList = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(mockTestJSON);
+            noOfQuestionsinMockTest = jsonObject.optString("totalQuestions");
+            String timeRemaining = jsonObject.optString("time");
+            JSONArray jsonArray = jsonObject.optJSONArray("questions");
+            for(int i=0; i<jsonArray.length(); i++)
+            {
+                MCQItem item = new MCQItem();
+
+                JSONObject jObj = jsonArray.getJSONObject(i);
+                item.setMcqQuestion(jObj.optString("Question"));
+                item.setAnswer(jObj.optString("Answer"));
+                item.setDetailedExplanation(jObj.optString("AnswerExplained"));
+
+                mcqDataList.add(item);
+
+                validatePrevNextBtns();
+
+            }
+            displayMCQ(page);
+        }
+        catch (JSONException e)
+        {
+
+        }
+    }
+
+    void validateAnswers()
+    {
+        MCQItem item = mcqDataList.get(page);
+
+        String userAnswer = "";
+
+        RadioButton radioA = (RadioButton)findViewById(R.id.radio_A);
+        RadioButton radioB = (RadioButton)findViewById(R.id.radioB);
+        RadioButton radio_C = (RadioButton)findViewById(R.id.radio_C);
+        RadioButton radio_D = (RadioButton)findViewById(R.id.radio_D);
+        if(radioA.isChecked())
+        {
+            userAnswer = "A";
+        }
+        else if(radioB.isChecked())
+        {
+            userAnswer = "B";
+        }
+        else if(radio_C.isChecked())
+        {
+            userAnswer = "C";
+        }
+        else if(radio_D.isChecked())
+        {
+            userAnswer = "D";
+        }
+
+        item.setMockTestUserAnswer(userAnswer);
+
+        answersList.add(item);
+    }
+
+    void setupUI()
+    {
+        LinearLayout timeLayout = (LinearLayout)findViewById(R.id.testHeaderLayoutID);
+        Button answersIB = (Button)findViewById(R.id.mcqAnswersButton);
+        TextView answerExplanationTV = (TextView)findViewById(R.id.answerExplanationTV);
+        TextView mockTestQNoTV = (TextView)findViewById(R.id.mockTestQNoTV);
+        hideAnswers();
+        if(isQuestionsType)
+        {
+            timeLayout.setVisibility(View.GONE);
+            answersIB.setVisibility(View.INVISIBLE);
+            answerExplanationTV.setVisibility(View.GONE);
+            mockTestQNoTV.setVisibility(View.VISIBLE);
+        }
+        else {
+            timeLayout.setVisibility(View.GONE);
+            answersIB.setVisibility(View.VISIBLE);
+            answerExplanationTV.setVisibility(View.GONE);
+            mockTestQNoTV.setVisibility(View.INVISIBLE);
+        }
     }
 
     void parseMCQRawFile()
@@ -284,16 +439,22 @@ public class MCQActivity extends AppCompatActivity {
 
     void displayMCQ(int page)
     {
-        hideAnswers();
-
         TextView mcqQuestionTV = (TextView) findViewById(R.id.mcqQuestionTV);
         MCQItem item = mcqDataList.get(page);
         mcqQuestionTV.setText(item.getMcqQuestion());
 
-        SharedPreferences sp = getSharedPreferences("your_prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putInt("mcqQuestionPageNo", page);
-        editor.commit();
+        if(!isQuestionsType) {
+            hideAnswers();
+            SharedPreferences sp = getSharedPreferences("your_prefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putInt("mcqQuestionPageNo", page);
+            editor.commit();
+        }
+        else {
+            TextView pageNoTV = (TextView)findViewById(R.id.mockTestQNoTV);
+            String pageNoText = "Question " + Integer.toString(page+1) + " of " + noOfQuestionsinMockTest;
+            pageNoTV.setText(pageNoText);
+        }
 
         validatePrevNextBtns();
     }

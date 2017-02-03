@@ -29,8 +29,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
     compile project(':cheetah-mobile-3.4.7')
-    compile 'com.google.android.gms:play-services-ads:8.4.0'
-    compile 'com.google.android.gms:play-services-location:8.4.0'
+    compile 'com.google.android.gms:play-services-ads:9.4.0'
+    compile 'com.google.android.gms:play-services-location:9.4.0'
     compile files('libs/revmob.jar')
     compile files('libs/InMobi-6.0.4.jar')
 }

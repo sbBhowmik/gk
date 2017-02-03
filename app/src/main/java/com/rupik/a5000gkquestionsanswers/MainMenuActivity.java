@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.appodeal.ads.Appodeal;
+
 import com.revmob.RevMob;
 import com.revmob.RevMobAdsListener;
 import com.revmob.ads.banner.RevMobBanner;
@@ -27,7 +28,7 @@ import java.util.Map;
 import com.inmobi.ads.*;
 import com.inmobi.sdk.*;
 
-public class MainMenuActivity extends AppCompatActivity {
+public class MainMenuActivity extends AppCompatActivity{
 
     RevMob revmob;
     RevMobBanner banner;
@@ -46,6 +47,7 @@ public class MainMenuActivity extends AppCompatActivity {
     {
         super.onResume();
 
+//        adView.loadAd();
         loadBanner();
     }
 
@@ -85,10 +87,15 @@ public class MainMenuActivity extends AppCompatActivity {
         return  true;
     }
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        boolean showAirPushAds = false;
+
+
 
         //====Back Button===
         ActionBar actionBar = getActionBar();
@@ -145,6 +152,16 @@ public class MainMenuActivity extends AppCompatActivity {
 
         ///-------------------
 
+        Button mcq_button = (Button)findViewById(R.id.mcq_button);
+        mcq_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenuActivity.this, MCQActivity.class);
+                i.putExtra("isQuestionsType",true);
+                startActivity(i);
+            }
+        });
+
         Button gkButton = (Button)findViewById(R.id.gkButton);
         gkButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,14 +193,7 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
-        Button mcq_button = (Button)findViewById(R.id.mcq_button);
-        mcq_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainMenuActivity.this, MCQActivity.class);
-                startActivity(i);
-            }
-        });
+
     }
 
     //===Ad Methods
@@ -227,4 +237,5 @@ public class MainMenuActivity extends AppCompatActivity {
         if(banner!=null)
             banner.release();
     }
+
 }

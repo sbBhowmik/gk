@@ -7,6 +7,24 @@ package com.rupik.a5000gkquestionsanswers;
 public class MCQItem {
     String mcqQuestion;
     String answer;
+    String mockTestUserAnswer;
+    String detailedExplanation;
+
+    public String getMockTestUserAnswer() {
+        return mockTestUserAnswer;
+    }
+
+    public void setMockTestUserAnswer(String mockTestUserAnswer) {
+        this.mockTestUserAnswer = mockTestUserAnswer;
+    }
+
+    public void setDetailedExplanation(String detailedExplanation) {
+        this.detailedExplanation = detailedExplanation;
+    }
+
+    public String getDetailedExplanation() {
+        return detailedExplanation;
+    }
 
     public String getAnswer() {
         return answer;
