@@ -2,19 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rupik.a5000gkquestionsanswers">
 
-    <!--Recommended permissions to receive brand‐centric ads with interactive functionality for better eCPMs-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-
-
+    <!-- Recommended permissions to receive brand‐centric ads with interactive functionality for better eCPMs -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -49,12 +47,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuizScreenActivity"
+        <activity
+            android:name=".QuizScreenActivity"
             android:parentActivityName=".MainMenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainMenuActivity"/>
-            </activity>
+                android:value=".MainMenuActivity" />
+        </activity>
 
         <receiver android:name=".AlarmReceiverGK">
             <intent-filter>
@@ -91,8 +90,6 @@
             android:name="com.appodeal.ads.LoaderActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
@@ -271,52 +268,58 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".UserProfileActivity" />
-        <activity android:name=".MCQActivity"></activity>
+        <activity android:name=".MCQActivity" />
 
-        <!--Required Activity for rendering ads in the embedded browser-->
-        <activity android:name="com.inmobi.rendering.InMobiAdActivity"
+        <!-- Required Activity for rendering ads in the embedded browser -->
+        <activity
+            android:name="com.inmobi.rendering.InMobiAdActivity"
             android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:hardwareAccelerated="true" />
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+        <!-- Required Receiver for enhanced targeting for better ads. -->
 
-        <!--Required Receiver for enhanced targeting for better ads.-->
-
-        <receiver android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
+        <receiver
+            android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.inmobi.share.id" />
             </intent-filter>
         </receiver>
 
-        <service android:enabled="true" android:name="com.inmobi.signals.activityrecognition.ActivityRecognitionManager" />
+        <service
+            android:name="com.inmobi.signals.activityrecognition.ActivityRecognitionManager"
+            android:enabled="true" />
 
-        <!--Required for Google Play Services-->
+        <!-- Required for Google Play Services -->
 
 
+        <!-- Required Receiver for enhanced targeting for better ads. -->
 
-        <!--Required Receiver for enhanced targeting for better ads.-->
-
-        <receiver android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
+        <receiver
+            android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.inmobi.share.id" />
             </intent-filter>
         </receiver>
 
-        <service android:enabled="true" android:name="com.inmobi.signals.activityrecognition.ActivityRecognitionManager" />
+        <service
+            android:name="com.inmobi.signals.activityrecognition.ActivityRecognitionManager"
+            android:enabled="true" />
 
-        <!--Required for Google Play Services-->
+        <!-- Required for Google Play Services -->
 
-        <meta-data android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
-        <!--<meta-data android:name="com.google.android.gms.version"-->
-            <!--android:value="7895000"/>-->
+        <!-- <meta-data android:name="com.google.android.gms.version" -->
+        <!-- android:value="7895000"/> -->
 
-
+        <activity android:name=".ScoreActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.rupik.a5000gkquestionsanswers;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.AsyncTask;
@@ -200,7 +201,29 @@ public class MCQActivity extends AppCompatActivity {
 
                 if(page == mcqDataList.size()-1) {
                     if (isQuestionsType) {
+
+                        if(isQuestionsType)
+                        {
+                            validateAnswers();
+                        }
+
                         //display Score Here with option to share
+
+                        //calculate score
+                        int score = 0;
+                        for(int i=0;i<mcqDataList.size();i++)
+                        {
+                            MCQItem item = mcqDataList.get(i);
+                            if(item.getAnswer().toLowerCase().contains(item.getMockTestUserAnswer().toLowerCase()))
+                            {
+                                score+=1;
+                            }
+                        }
+                        Intent i = new Intent(MCQActivity.this, ScoreActivity.class);
+                        i.putExtra("score",score);
+                        MCQActivity.this.startActivity(i);
+                        //
+
                     }
                 }
                 else {
