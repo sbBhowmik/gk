@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.appodeal.ads.Appodeal;
@@ -48,7 +49,6 @@ public class MCQActivity extends AppCompatActivity {
     private boolean fullscreenIsLoaded;
     boolean isQuestionsType=false;
 
-    ArrayList<MCQItem> answersList = new ArrayList<>();
     int score;
 
     @Override
@@ -69,6 +69,8 @@ public class MCQActivity extends AppCompatActivity {
 
     static  int revmobCount = 0;
     String adTypeString;
+
+    ArrayList<MCQItem> answersArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,6 +148,7 @@ public class MCQActivity extends AppCompatActivity {
         isQuestionsType = this.getIntent().getExtras().getBoolean("isQuestionsType");
 
         setupUI();
+
         if(!isQuestionsType) {
             parseMCQRawFile();
         }
@@ -157,6 +160,11 @@ public class MCQActivity extends AppCompatActivity {
         prevMCQQuestionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(isQuestionsType)
+                {
+                    validateAnswers();
+                }
+
                 page -= 1;
                 displayMCQ(page);
                 reloadBanner();
@@ -190,37 +198,46 @@ public class MCQActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(isQuestionsType)
-                {
-                    validateAnswers();
-                }
-
-                page += 1;
-                displayMCQ(page);
-                reloadBanner();
-
-                if(revmobCount >= 9)
-                {
-                    if(adTypeString.contains("appodeal")) {
-                        Appodeal.show(MCQActivity.this, Appodeal.INTERSTITIAL);
-                        revmobCount = 0;
-                    }
-                    if(adTypeString.contains("inmobi")) {
-                        if (interstitial.isReady()) {
-                            interstitial.show();
-                            revmobCount = 0;
-                            interstitial.load();
-                        }
-                    }
-
-                    if(adTypeString.contains("revmob")) {
-                        if (fullscreenIsLoaded) {
-                            showFullscreen();
-                            revmobCount = 0;
-                        }
+                if(page == mcqDataList.size()-1) {
+                    if (isQuestionsType) {
+                        //display Score Here with option to share
                     }
                 }
-                revmobCount++;
+                else {
+                    if(isQuestionsType)
+                    {
+                        validateAnswers();
+                    }
+
+                    page += 1;
+                    displayMCQ(page);
+                    reloadBanner();
+
+                    if(revmobCount >= 9)
+                    {
+                        if(adTypeString.contains("appodeal")) {
+                            Appodeal.show(MCQActivity.this, Appodeal.INTERSTITIAL);
+                            revmobCount = 0;
+                        }
+                        if(adTypeString.contains("inmobi")) {
+                            if (interstitial.isReady()) {
+                                interstitial.show();
+                                revmobCount = 0;
+                                interstitial.load();
+                            }
+                        }
+
+                        if(adTypeString.contains("revmob")) {
+                            if (fullscreenIsLoaded) {
+                                showFullscreen();
+                                revmobCount = 0;
+                            }
+                        }
+                    }
+                    revmobCount++;
+                }
+
+
             }
         });
 
@@ -331,9 +348,10 @@ public class MCQActivity extends AppCompatActivity {
             userAnswer = "D";
         }
 
-        item.setMockTestUserAnswer(userAnswer);
+//        if(userAnswer!=null)
+            item.setMockTestUserAnswer(userAnswer);
 
-        answersList.add(item);
+//        answersList.add(item);
     }
 
     void setupUI()
@@ -439,12 +457,14 @@ public class MCQActivity extends AppCompatActivity {
 
     void displayMCQ(int page)
     {
+        hideAnswers();
+
         TextView mcqQuestionTV = (TextView) findViewById(R.id.mcqQuestionTV);
         MCQItem item = mcqDataList.get(page);
         mcqQuestionTV.setText(item.getMcqQuestion());
 
         if(!isQuestionsType) {
-            hideAnswers();
+
             SharedPreferences sp = getSharedPreferences("your_prefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
             editor.putInt("mcqQuestionPageNo", page);
@@ -459,16 +479,53 @@ public class MCQActivity extends AppCompatActivity {
         validatePrevNextBtns();
     }
 
+    void clearRadioButtons()
+    {
+        RadioGroup radioGroup = (RadioGroup)findViewById(R.id.mcqRadioGroup);
+        radioGroup.clearCheck();
+
+        RadioButton radioA = (RadioButton)findViewById(R.id.radio_A);
+
+        RadioButton radioB = (RadioButton)findViewById(R.id.radioB);
+
+        RadioButton radio_C = (RadioButton)findViewById(R.id.radio_C);
+
+        RadioButton radio_D = (RadioButton)findViewById(R.id.radio_D);
+
+        if(isQuestionsType)
+        {
+            if(mcqDataList!=null) {
+                String mockTestUSerEnteredAnswer = "";
+                MCQItem item = mcqDataList.get(page);
+                mockTestUSerEnteredAnswer = item.getMockTestUserAnswer();
+
+                if(mockTestUSerEnteredAnswer != null)
+                {
+                    if(mockTestUSerEnteredAnswer.toLowerCase().contains("a"))
+                    {
+                        radioA.setChecked(true);
+                    }
+                    else if (mockTestUSerEnteredAnswer.toLowerCase().contains("b"))
+                    {
+                        radioB.setChecked(true);
+                    }
+                    else if (mockTestUSerEnteredAnswer.toLowerCase().contains("c"))
+                    {
+                        radio_C.setChecked(true);
+                    }
+                    else if (mockTestUSerEnteredAnswer.toLowerCase().contains("d"))
+                    {
+                        radio_D.setChecked(true);
+                    }
+
+                }
+            }
+        }
+    }
+
     void hideAnswers()
     {
-        RadioButton radioA = (RadioButton)findViewById(R.id.radio_A);
-        radioA.setChecked(false);
-        RadioButton radioB = (RadioButton)findViewById(R.id.radioB);
-        radioB.setChecked(false);
-        RadioButton radio_C = (RadioButton)findViewById(R.id.radio_C);
-        radio_C.setChecked(false);
-        RadioButton radio_D = (RadioButton)findViewById(R.id.radio_D);
-        radio_D.setChecked(false);
+        clearRadioButtons();
 
         ImageView answerA = (ImageView)findViewById(R.id.answerA);
         answerA.setVisibility(View.INVISIBLE);
@@ -536,9 +593,16 @@ public class MCQActivity extends AppCompatActivity {
         }
         if(page == mcqDataList.size()-1)
         {
-            nextMCQQuestionBtn.setVisibility(View.INVISIBLE);
+            if(isQuestionsType)
+            {
+                nextMCQQuestionBtn.setText("Finish");
+            }
+            else {
+                nextMCQQuestionBtn.setVisibility(View.INVISIBLE);
+            }
         }
         else {
+            nextMCQQuestionBtn.setText("Next");
             nextMCQQuestionBtn.setVisibility(View.VISIBLE);
         }
     }

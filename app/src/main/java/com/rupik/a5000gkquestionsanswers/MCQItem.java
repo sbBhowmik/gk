@@ -10,6 +10,7 @@ public class MCQItem {
     String mockTestUserAnswer;
     String detailedExplanation;
 
+
     public String getMockTestUserAnswer() {
         return mockTestUserAnswer;
     }
