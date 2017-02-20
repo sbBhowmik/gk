@@ -1,10 +1,12 @@
 package com.rupik.a5000gkquestionsanswers;
 
+import java.io.Serializable;
+
 /**
  * Created by macmin5 on 17/01/17.
  */
 
-public class MCQItem {
+public class MCQItem implements Serializable {
     String mcqQuestion;
     String answer;
     String mockTestUserAnswer;

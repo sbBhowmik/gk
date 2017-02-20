@@ -209,18 +209,12 @@ public class MCQActivity extends AppCompatActivity {
 
                         //display Score Here with option to share
 
-                        //calculate score
-                        int score = 0;
-                        for(int i=0;i<mcqDataList.size();i++)
-                        {
-                            MCQItem item = mcqDataList.get(i);
-                            if(item.getAnswer().toLowerCase().contains(item.getMockTestUserAnswer().toLowerCase()))
-                            {
-                                score+=1;
-                            }
-                        }
+
                         Intent i = new Intent(MCQActivity.this, ScoreActivity.class);
-                        i.putExtra("score",score);
+                        //i.putExtra("score",score);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("mcqDataList", mcqDataList);
+                        i.putExtras(bundle);
                         MCQActivity.this.startActivity(i);
                         //
 

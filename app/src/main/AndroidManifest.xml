@@ -319,7 +319,8 @@
         <!-- <meta-data android:name="com.google.android.gms.version" -->
         <!-- android:value="7895000"/> -->
 
-        <activity android:name=".ScoreActivity"></activity>
+        <activity android:name=".ScoreActivity" />
+        <activity android:name=".MCQAllAnswersActivity"></activity>
     </application>
 
 </manifest>
