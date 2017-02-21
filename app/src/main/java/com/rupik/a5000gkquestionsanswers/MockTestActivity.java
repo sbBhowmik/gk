@@ -43,6 +43,8 @@ public class MockTestActivity extends AppCompatActivity {
 
     void prepareMockTestLists()
     {
+        mockTestLists = new ArrayList<>();
+
         try{
             final SharedPreferences prefs = this.getSharedPreferences("your_prefs", MODE_PRIVATE);
 
@@ -96,11 +98,14 @@ public class MockTestActivity extends AppCompatActivity {
                     }
                     in.close();
 
-                    parseMockTestJson(mockTestJSON);
+//                    parseMockTestJson(mockTestJSON);
 
-                    saveData(mockTestJSON, "MockTest"+Integer.toString(serverVersion));
-
+                    int totalFiles = prefs.getInt("TOTAL_MOCK_TEST_FILES",0);
+                    totalFiles+=1;
                     SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("TOTAL_MOCK_TEST_FILES",totalFiles);
+                    saveData(mockTestJSON, "MockTest"+Integer.toString(totalFiles));
+
                     editor.putInt("MOCK_TEST_FILE_VERSION",serverVersion);
                     editor.commit();
 
@@ -128,19 +133,39 @@ public class MockTestActivity extends AppCompatActivity {
 
             }
 
+
+
+            String rawMCQTextA = "";
+
+            int totalFiles = prefs.getInt("TOTAL_MOCK_TEST_FILES",0);
+
+            for(int i=totalFiles;i>0;i--)
+            {
+                String fileName = "MockTest"+Integer.toString(i);
+                File f = new File(this.getFilesDir().getPath() + "/" + fileName);
+                //check whether file exists
+                FileInputStream is = new FileInputStream(f);
+                int size = is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+                rawMCQTextA = new String(buffer);
+                parseMockTestJson(rawMCQTextA);
+            }
+
             //
 
             InputStream isA = this.getResources().openRawResource(R.raw.mocktest1);
             byte[] bufferA = new byte[isA.available()];
             while (isA.read(bufferA) != -1) ;
-            String rawMCQTextA = new String(bufferA);
+            rawMCQTextA = new String(bufferA);
             isA.close();
             parseMockTestJson(rawMCQTextA);
 
             isA = this.getResources().openRawResource(R.raw.mocktest2);
             bufferA = new byte[isA.available()];
             while (isA.read(bufferA) != -1) ;
-                 rawMCQTextA = new String(bufferA);
+            rawMCQTextA = new String(bufferA);
             isA.close();
             parseMockTestJson(rawMCQTextA);
 
@@ -165,24 +190,6 @@ public class MockTestActivity extends AppCompatActivity {
             isA.close();
             parseMockTestJson(rawMCQTextA);
 
-
-
-            int totalFiles = prefs.getInt("TOTAL_MOCK_TEST_FILES",0);
-
-            for(int i=0;i<totalFiles;i++)
-            {
-                String fileName = "MockTest"+Integer.toString(i);
-                File f = new File(this.getFilesDir().getPath() + "/" + fileName);
-                //check whether file exists
-                FileInputStream is = new FileInputStream(f);
-                int size = is.available();
-                byte[] buffer = new byte[size];
-                is.read(buffer);
-                is.close();
-                rawMCQTextA = new String(buffer);
-                parseMockTestJson(rawMCQTextA);
-            }
-
             MockTestActivity.this.runOnUiThread(new Runnable() {
                 public void run() {
                     displayData();
@@ -204,7 +211,7 @@ public class MockTestActivity extends AppCompatActivity {
 //            noOfQuestionsinMockTest = jsonObject.optString("totalQuestions");
             String timeRemaining = jsonObject.optString("time");
             JSONArray jsonArray = jsonObject.optJSONArray("questions");
-            String title = jsonObject.optString("Mock Test");
+            String title = jsonObject.optString("title");
             for(int i=0; i<jsonArray.length(); i++)
             {
                 MCQItem item = new MCQItem();
