@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">5000+ GK Questions &amp; Answers</string>
+    <string name="title_activity_mock_test_list">MockTestListActivity</string>
 </resources>

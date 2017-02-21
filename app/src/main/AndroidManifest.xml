@@ -320,7 +320,12 @@
         <!-- android:value="7895000"/> -->
 
         <activity android:name=".ScoreActivity" />
-        <activity android:name=".MCQAllAnswersActivity"></activity>
+        <activity android:name=".MCQAllAnswersActivity" />
+        <activity
+            android:name=".MockTestListActivity"
+            android:label="@string/title_activity_mock_test_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MockTestActivity"></activity>
     </application>
 
 </manifest>

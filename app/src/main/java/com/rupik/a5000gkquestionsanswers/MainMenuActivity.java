@@ -157,7 +157,7 @@ public class MainMenuActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainMenuActivity.this, MCQActivity.class);
-                i.putExtra("isQuestionsType",true);
+                i.putExtra("isQuestionsType",false);
                 startActivity(i);
             }
         });
@@ -189,6 +189,15 @@ public class MainMenuActivity extends AppCompatActivity{
                 Intent i = new Intent(MainMenuActivity.this, QuizScreenActivity.class);
                 i.putExtra("isCurrentAffairsType",true);
                 i.putExtra("DateType",1);
+                startActivity(i);
+            }
+        });
+        Button mockTest_button = (Button)findViewById(R.id.mockTest_button);
+        mockTest_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenuActivity.this, MockTestActivity.class);
+//                i.putExtra("isQuestionsType",true);
                 startActivity(i);
             }
         });

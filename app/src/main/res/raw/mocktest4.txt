@@ -1,0 +1,57 @@
+{
+  "title":"Mock Test 1 - Feb 21, 2017",
+  "time":"-1",
+  "totalQuestions":"10",
+  "questions":[
+  	{
+    "Question":"Which of the following ancient Indian Kings had appointed Dhamma Mahamattas?  \n[A] Asoka \n[B] Chandragupta Maurya \n[C] Kanishka \n[D] Chandragupta-II",
+    "Answer":"A",
+    "AnswerExplained":"Dhamma Mahamattas were special officers appointed by Ashoka to spread the message of Dhamma or his Dharma. The Dhamma Mahamattas were required to look after the welfare of the people of different religions and to enforce the rules regarding the sanctity of animal life."
+ 	 },
+  	{
+    "Question":"Consider the following statements: \n1. Andal was a woman Alvar whose compositions were widely sung. \n2. Karaikkal Ammaiyar was a devotee of Shiva who adopted the path of extreme asceticim in order to attain her goal Which of the above statements is / are correct? \n[A] Only 1 \n[B] Only 2 \n[C] Both 1 & 2 \n[D] Neither 1 nor 2",
+    "Answer":"C",
+    "AnswerExplained":""
+ 	 },
+  	{
+    "Question":"Nābhivarṣa is the historical name of which of the following countries?  \n[A] India \n[B] Myanmar \n[C] China \n[D] Egypt",
+    "Answer":"A",
+    "AnswerExplained":"According to some historical sources, the term Nābhivarṣa was used for India prior to its name Bharatvarsa. The name is derived from King Nabhi, who was father of Rishabhanatha, the first Tirthankara in Jainism."
+ 	 },
+  	{
+    "Question":"Apart from Google, which of the following is a correct set of subsidiaries of Alphabet Inc.?  [A] Calico, DeepMind, Nest Labs, Waymo [B] Calico, Softimage, NetCarta, Firefly [C] DeepMind, NestLabs, Instagram, Whatsapp [D] Calico, Instagram, Nest Labs, Waymo",
+    "Answer":"A",
+    "AnswerExplained":"Calico, DeepMind, Nest Labs, Waymo are subsidiaries of Alphabet Inc. whose major subsidiary is Google.  \nSoftimage, NetCarta and Firefly are subsidiaries of Microsoft.  \nInstagram and Whatsapp are subsidiaries of Facebook."
+ 	 },
+  	{
+    "Question":"Shares of a company given in exchange for work done are called?  [A] Sweat Equity [B] Preferential Shares [C] Hot equity [D] Secondary Shares",
+    "Answer":"A",
+    "AnswerExplained":"A sweat equity share is an equity share issued by the company to employees or directors at a discount or for consideration other than cash for providing know-how or making available rights in the nature of intellectual property rights or value additions."
+ 	 },
+  	{
+    "Question":"Which of the following is / are fund managers for National Pension System (NPS) currently: \nHDFC Pension Fund  \nKotak Pension Fund \nReliance Capital Pension \nSelect the correct option from the codes given below: \n[A] Only 1 \n[B] Only 1 & 2 \n[C] Only 2 & 3 \n[D] 1, 2 & 3",
+    "Answer":"D",
+    "AnswerExplained":"At present, there are only seven NPS fund managers viz. HDFC Pension Fund, ICICI Prudential Pension, Kotak Pension Fund, LIC Pension Fund,  Reliance Capital Pension, SBI Pension Fund and UTI Retirement Solutions."
+ 	 },
+  	{
+    "Question":"Consider the following statements about Lassa Fever: \nIts a Viral disease mostly prevalent in Latin American countries \nIts a zoonotic disease that trasnmits from fruit bats to human Which of the above is / are correct statements? \n[A] Only 1 \n[B] Only 2 \n[C] Both 1 & 2 \n[D] Neither 1 nor 2",
+    "Answer":"D",
+    "AnswerExplained":"Lassa fever or Lassa hemorrhagic fever (LHF) is caused by Lassa virus. This disease is mainly prevalent in West Africa countries such as Nigeria, Liberia, Sierra Leone, Guinea, and Ghana. It results in 5000 deaths every year. It’s a zoonotic disease transmits to human from a species of mouse. "
+ 	 },
+  	{
+    "Question":"Which of the following countries was recently making news for its experiment of Universal Basic Income (UBI)?  \n[A] Australia \n[B] New Zealand \n[C] Finland \n[D] Poland",
+    "Answer":"C",
+    "AnswerExplained":"In Finland, 2,000 unemployed people are being provided with monetary compensation each month for a span of two years with very little or no preconditions."
+ 	 },
+  	{
+    "Question":"Which of the following is not a correct statement with respect to Masala Bonds?  \n[A] They allow Indian companies to raise overseas debts in Indian currency \n[B] Interest Payment on Masala Bonds is in Indian Rupee \n[C] Most popular market for Masala Bonds is New York currently \n[D] All of the above are correct statements",
+    "Answer":"C",
+    "AnswerExplained":"Masala bonds allow Indian companies to raise overseas debt in the Indian currency. The instrument shields the issuers from currency fluctuations mainly because interest payments and redemption is in rupees. At the same time, investors get interest rates that are higher than in their domestic markets. In third statement, the most popular market for Masala bonds currently is London."
+ 	 },
+  {
+    "Question":"Consider the following schemes: \nMGNREGA \nSansad Aadarsh Gram Yojana \nMPLADS scheme Which of the above is / are based on demand-based approach? \n[A] Only 1 \n[B] Only 1 & 2 \n[C] Only 2 & 3 \n[D] 1, 2 & 3",
+    "Answer":"B",
+    "AnswerExplained":"MGNREGA and SAGY are demand driven schemes. MPLADS is not among such schemes."
+ 	 }
+  ]
+}

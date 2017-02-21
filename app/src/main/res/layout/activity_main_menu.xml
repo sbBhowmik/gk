@@ -66,6 +66,19 @@
         android:textSize="15dp"
         android:padding="10dp"
         />
+    <Button
+        android:id="@+id/mockTest_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/mcq_button"
+        android:background="@drawable/bg_rect"
+        android:text="Mock Test"
+        android:textStyle="bold"
+        android:textColor="#003022"
+        android:fontFamily="serif"
+        android:textSize="15dp"
+        android:padding="10dp"
+        />
 
     <LinearLayout android:id="@+id/bannerLayout"
         android:orientation="horizontal"
