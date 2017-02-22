@@ -14,11 +14,20 @@ public class MCQAllAnswersActivity extends AppCompatActivity {
     ArrayList<MCQItem> mcqDataList;
 
     @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mcqall_answers);
 
         Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        Appodeal.show(this, Appodeal.INTERSTITIAL);
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();

@@ -1,5 +1,6 @@
 package com.rupik.a5000gkquestionsanswers;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,6 +38,8 @@ import java.util.List;
 public class MockTestActivity extends AppCompatActivity {
 
     ArrayList<MockTestListItem> mockTestLists;
+
+    static int MOCK_TEST_ACT_REQ_CODE = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,10 +83,22 @@ public class MockTestActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("mcqDataList", mcqDataList);
                 intent.putExtras(bundle);
-                MockTestActivity.this.startActivity(intent);
+                MockTestActivity.this.startActivityForResult(intent, MOCK_TEST_ACT_REQ_CODE);
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == MOCK_TEST_ACT_REQ_CODE) {
+            if(resultCode == Activity.RESULT_OK){
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
     }
 
     void prepareMockTestLists()
@@ -200,6 +215,7 @@ public class MockTestActivity extends AppCompatActivity {
 
             //
 
+            rawMCQTextA = "";
             InputStream isA = this.getResources().openRawResource(R.raw.mocktest1);
             byte[] bufferA = new byte[isA.available()];
             while (isA.read(bufferA) != -1) ;
@@ -207,6 +223,7 @@ public class MockTestActivity extends AppCompatActivity {
             isA.close();
             parseMockTestJson(rawMCQTextA);
 
+            rawMCQTextA = "";
             isA = this.getResources().openRawResource(R.raw.mocktest2);
             bufferA = new byte[isA.available()];
             while (isA.read(bufferA) != -1) ;
@@ -214,26 +231,27 @@ public class MockTestActivity extends AppCompatActivity {
             isA.close();
             parseMockTestJson(rawMCQTextA);
 
-            isA = this.getResources().openRawResource(R.raw.mocktest3);
-            bufferA = new byte[isA.available()];
-            while (isA.read(bufferA) != -1) ;
-            rawMCQTextA = new String(bufferA);
-            isA.close();
-            parseMockTestJson(rawMCQTextA);
 
-            isA = this.getResources().openRawResource(R.raw.mocktest4);
-            bufferA = new byte[isA.available()];
-            while (isA.read(bufferA) != -1) ;
-            rawMCQTextA = new String(bufferA);
-            isA.close();
-            parseMockTestJson(rawMCQTextA);
-
-            isA = this.getResources().openRawResource(R.raw.mocktest5);
-            bufferA = new byte[isA.available()];
-            while (isA.read(bufferA) != -1) ;
-            rawMCQTextA = new String(bufferA);
-            isA.close();
-            parseMockTestJson(rawMCQTextA);
+//            isA = this.getResources().openRawResource(R.raw.mocktest3);
+//            bufferA = new byte[isA.available()];
+//            while (isA.read(bufferA) != -1) ;
+//            rawMCQTextA = new String(bufferA);
+//            isA.close();
+//            parseMockTestJson(rawMCQTextA);
+//
+//            isA = this.getResources().openRawResource(R.raw.mocktest4);
+//            bufferA = new byte[isA.available()];
+//            while (isA.read(bufferA) != -1) ;
+//            rawMCQTextA = new String(bufferA);
+//            isA.close();
+//            parseMockTestJson(rawMCQTextA);
+//
+//            isA = this.getResources().openRawResource(R.raw.mocktest5);
+//            bufferA = new byte[isA.available()];
+//            while (isA.read(bufferA) != -1) ;
+//            rawMCQTextA = new String(bufferA);
+//            isA.close();
+//            parseMockTestJson(rawMCQTextA);
 
             MockTestActivity.this.runOnUiThread(new Runnable() {
                 public void run() {

@@ -241,10 +241,10 @@
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
 
         <!-- suppress AndroidDomInspection -->
-        <activity
-            android:name="com.revmob.FullscreenActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Translucent" />
+        <!--<activity-->
+            <!--android:name="com.revmob.FullscreenActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation"-->
+            <!--android:theme="@android:style/Theme.Translucent" />-->
 
         <!-- suppress AndroidDomInspection -->
         <activity

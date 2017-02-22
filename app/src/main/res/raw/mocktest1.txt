@@ -4,54 +4,54 @@
   "totalQuestions":"10",
   "questions":[
   	{
-    "Question":"Which of the following ancient Indian Kings had appointed Dhamma Mahamattas?  \n[A] Asoka \n[B] Chandragupta Maurya \n[C] Kanishka \n[D] Chandragupta-II",
+    "Question":"Which state to host 3rd edition of LIC-Gateway LitFest? [A] Maharashtra [B] Karnataka [C] West Bengal [D] Assam",
     "Answer":"A",
-    "AnswerExplained":"Dhamma Mahamattas were special officers appointed by Ashoka to spread the message of Dhamma or his Dharma. The Dhamma Mahamattas were required to look after the welfare of the people of different religions and to enforce the rules regarding the sanctity of animal life."
+    "AnswerExplained":"The 3rd edition of the annual LIC Gateway LitFest will be held in Mumbai, Maharashtra on February 25 and 26, 2017. The 2017 theme is ‘the contemporary face of Indian literature’, which focuses on five languages – Bengali, Marathi, Malayalam, Punjabi and Tamil. There will be a discussion for writers from script-free languages such as Ahirani, Bhojpuri, Khasi, Konkani, Kosli and Santhali. In the Litfest, approx 50 writers from 15 languages, including National Award winner K R Meera, script-writer Anjali Menon and ace filmmaker Adoor Gopalakrishnan will participate. Apart from this, Kosli poet Haldhar Nag will be bestowed with the first Gateway LitFest Lifetime Achievement Award."
  	 },
   	{
-    "Question":"Consider the following statements: \n1. Andal was a woman Alvar whose compositions were widely sung. \n2. Karaikkal Ammaiyar was a devotee of Shiva who adopted the path of extreme asceticim in order to attain her goal Which of the above statements is / are correct? \n[A] Only 1 \n[B] Only 2 \n[C] Both 1 & 2 \n[D] Neither 1 nor 2",
-    "Answer":"C",
-    "AnswerExplained":""
- 	 },
-  	{
-    "Question":"Nābhivarṣa is the historical name of which of the following countries?  \n[A] India \n[B] Myanmar \n[C] China \n[D] Egypt",
-    "Answer":"A",
-    "AnswerExplained":"According to some historical sources, the term Nābhivarṣa was used for India prior to its name Bharatvarsa. The name is derived from King Nabhi, who was father of Rishabhanatha, the first Tirthankara in Jainism."
- 	 },
-  	{
-    "Question":"Apart from Google, which of the following is a correct set of subsidiaries of Alphabet Inc.?  [A] Calico, DeepMind, Nest Labs, Waymo [B] Calico, Softimage, NetCarta, Firefly [C] DeepMind, NestLabs, Instagram, Whatsapp [D] Calico, Instagram, Nest Labs, Waymo",
-    "Answer":"A",
-    "AnswerExplained":"Calico, DeepMind, Nest Labs, Waymo are subsidiaries of Alphabet Inc. whose major subsidiary is Google.  \nSoftimage, NetCarta and Firefly are subsidiaries of Microsoft.  \nInstagram and Whatsapp are subsidiaries of Facebook."
- 	 },
-  	{
-    "Question":"Shares of a company given in exchange for work done are called?  [A] Sweat Equity [B] Preferential Shares [C] Hot equity [D] Secondary Shares",
-    "Answer":"A",
-    "AnswerExplained":"A sweat equity share is an equity share issued by the company to employees or directors at a discount or for consideration other than cash for providing know-how or making available rights in the nature of intellectual property rights or value additions."
- 	 },
-  	{
-    "Question":"Which of the following is / are fund managers for National Pension System (NPS) currently: \nHDFC Pension Fund  \nKotak Pension Fund \nReliance Capital Pension \nSelect the correct option from the codes given below: \n[A] Only 1 \n[B] Only 1 & 2 \n[C] Only 2 & 3 \n[D] 1, 2 & 3",
+    "Question":"Who has been chosen as the new chief minister of Nagaland? [A] K. L. Chishi [B] John Bosco Jasokie [C] Hokishe Sema [D] Shurhozelie Liezietsu",
     "Answer":"D",
-    "AnswerExplained":"At present, there are only seven NPS fund managers viz. HDFC Pension Fund, ICICI Prudential Pension, Kotak Pension Fund, LIC Pension Fund,  Reliance Capital Pension, SBI Pension Fund and UTI Retirement Solutions."
+    "AnswerExplained":"Shurhozelie Liezietsu (81), the president of Naga People’s Front (NPF), has been chosen as the new Chief Minister (CM) of Nagaland in place of T R Zeliang who resigned on February 19, 2017 under intense pressure from agitating tribal organizations. Shurhozelie, who is not an MLA and belongs to Angami tribe, will now have to seek an election within 6 months. According to an official source, Liezietsu will be sworn-in as the new CM on February 22."
  	 },
   	{
-    "Question":"Consider the following statements about Lassa Fever: \nIts a Viral disease mostly prevalent in Latin American countries \nIts a zoonotic disease that trasnmits from fruit bats to human Which of the above is / are correct statements? \n[A] Only 1 \n[B] Only 2 \n[C] Both 1 & 2 \n[D] Neither 1 nor 2",
+    "Question":"Jo-Wilfried Tsonga, who has won the 2017 Rotterdam Tennis Tournament, is belonged to which country? [A] Belgium [B] France [C] United States [D] Germany",
+    "Answer":"B",
+    "AnswerExplained":"Jo-Wilfried Tsonga, a French professional tennis player, has won the 2017 Rotterdam Tennis Tournament by defeating David Goffin of Belgium in the final by 4-6, 6-4, 6-1."
+ 	 },
+  	{
+    "Question":"Shibaji Banerjee, who passed away recently, was the legendary player of which sports? [A] Chess [B] Cricket [C] Football [D] Tennis",
+    "Answer":"C",
+    "AnswerExplained":"Shibaji Banerjee (68), the former Mohun Bagan and India national team goalkeeper, has recently passed away in Kolkata, West Bengal. He played for Mohun Bagan for 11 years and was famous for saving penalty-kicks. He is considered to be one of India’s best shot-stoppers when it came to penalty-kicks. His most memorable performance in a tie-breaker was against Mohammedan Sporting in the 1980 Federation Cup semi-final when he stopped spot-kicks from Akbar and Amalraj. Banerjee is best remembered for his performance against New York Cosmos in 1977, which had the Brazilian legend Pele in their ranks. His diving save from Pele in the first half is one of the most-talked about moments in Indian football and has become a part of the folklore."
+ 	 },
+  	{
+    "Question":"Which public sector bank has signed MoU with the Ministry of Human Resource Development (MHRD) to start higher education financing agency? [A] Canara Bank [B] State Bank of India [C] ICICI Bank [D] HDFC Bank",
+    "Answer":"A",
+    "AnswerExplained":"The Canara Bank has signed a Memorandum of Understanding (MoU) with the Ministry of Human Resource Development (MHRD) to operationalise the Higher Education Financing Agency (HEFA). HEFA has been formed as a special purpose vehicle. It would leverage the equity to raise up to Rs. 20,000 crore for funding projects for infrastructure and development of world class Labs in IITs/IIMs/NITs and such other institutions. HEFA would also mobilise CSR funds from PSUs/corporates, which would in turn be released for promoting research and innovation in these institutions on a grant basis. The purpose of the HEFA is to create high quality infrastructure/capital assets in premier educational institutions. All the centrally funded higher educational institutions would be eligible for joining as members of HEFA."
+ 	 },
+  	{
+    "Question":"Let’s read together” programme was held in which state’s government-run schools? [A] Rajasthan [B] Madhya Pradesh [C] Manipur [D] Himachal Pradesh",
+    "Answer":"B",
+    "AnswerExplained":"The ‘Mile Banche Madhya Pradesh (or Let us read together) programme has been held in all government schools of Madhya Pradesh. As part of the programme, over 1.26 lakh volunteers including MP Chief Minister Shivraj Singh Chouhan besides pensioners, mediapersons, homemakers and other professionals played the role of a ‘teacher’ for a day in government-run schools on February 18, 2017. They read out a portion of any Hindi book. Along with this, they motivate children to read out any portion of their interest from any other book."
+ 	 },
+  	{
+    "Question":"India has sanctioned how much amount of soft loan to Nepal for infra projects? [A] $444 million [B] $245 million [C] $340 million [D] $542 million",
+    "Answer":"C",
+    "AnswerExplained":"The Indian government has sanctioned $340 million soft loan to Nepal for various infrastructure development programmes at Nepal Infrastructure Summit 2017 at Kathmandu, Nepal on February 19, 2017. Under this programme, Mahalaki bridge and 15 roads will be constructed in various parts of Nepal."
+ 	 },
+  	{
+    "Question":"Altamas Kabir, the former Chief Justice of India (CJI) has passed away. He hailed from which of the following states? [A] Kerala [B] Tamil Nadu [C] Uttar Pradesh [D] West Bengal",
     "Answer":"D",
-    "AnswerExplained":"Lassa fever or Lassa hemorrhagic fever (LHF) is caused by Lassa virus. This disease is mainly prevalent in West Africa countries such as Nigeria, Liberia, Sierra Leone, Guinea, and Ghana. It results in 5000 deaths every year. It’s a zoonotic disease transmits to human from a species of mouse. "
+    "AnswerExplained":"Altamas Kabir (68), the former Chief Justice of India (CJI), has recently passed away in Kolkata, West Bengal on February 19, 2017. Justice Kabir was the Chief Justice at Supreme Court for a brief period of nine months in 2012-13. As the Chief Justice, he was part of the Supreme Court Bench which heard the case of the two Italian marines in 2013. He would be remembered for the gentle yet firm nature with which he handled court work as well as his administrative job as the head of India’s judicial system."
  	 },
   	{
-    "Question":"Which of the following countries was recently making news for its experiment of Universal Basic Income (UBI)?  \n[A] Australia \n[B] New Zealand \n[C] Finland \n[D] Poland",
+    "Question":"Which state government has approved cloud seeding program to produce adequate rain? [A] Punjab [B] Haryana [C] Maharashtra [D] Madhya Pradesh",
     "Answer":"C",
-    "AnswerExplained":"In Finland, 2,000 unemployed people are being provided with monetary compensation each month for a span of two years with very little or no preconditions."
- 	 },
-  	{
-    "Question":"Which of the following is not a correct statement with respect to Masala Bonds?  \n[A] They allow Indian companies to raise overseas debts in Indian currency \n[B] Interest Payment on Masala Bonds is in Indian Rupee \n[C] Most popular market for Masala Bonds is New York currently \n[D] All of the above are correct statements",
-    "Answer":"C",
-    "AnswerExplained":"Masala bonds allow Indian companies to raise overseas debt in the Indian currency. The instrument shields the issuers from currency fluctuations mainly because interest payments and redemption is in rupees. At the same time, investors get interest rates that are higher than in their domestic markets. In third statement, the most popular market for Masala bonds currently is London."
+    "AnswerExplained":"The Maharashtra government has approved Rs. 250-crore cloud seeding programme to produce adequate rain because of droughts over the Vidarbha region. The programme would be coordinated by the Indian Institute of Tropical Meteorology. It will be the first controlled experiment to quantify the extent to which clouds form water drops large enough to make rain. For their experiment, weather scientists will fly will fly two aircraft and spray dry ice and silver iodide on 100 clouds and compare them with 100 unseeded clouds. Ground radar will track the clouds and verify which ones contributed rain and by how much. The programme will account for the natural variability of the monsoon."
  	 },
   {
-    "Question":"Consider the following schemes: \nMGNREGA \nSansad Aadarsh Gram Yojana \nMPLADS scheme Which of the above is / are based on demand-based approach? \n[A] Only 1 \n[B] Only 1 & 2 \n[C] Only 2 & 3 \n[D] 1, 2 & 3",
+    "Question":"Which public sector bank has won the National MSME Excellence Award 2017? [A] Punjab National Bank [B] Corporation Bank [C] ICICI Bank [D] State Bank of India",
     "Answer":"B",
-    "AnswerExplained":"MGNREGA and SAGY are demand driven schemes. MPLADS is not among such schemes."
+    "AnswerExplained":"The Mangalore-based public sector lender, Corporation Bank has won the ‘National MSME Excellence Award 2017’ at a function in New Delhi for playing constructive role in the MSME sector viz. online loan facility for MSME borrowers, online facility for revival and rehabilitation of MSME, campaign for growth with various concessions and collateral free loans up to Rs 2 crore under Credit Guarantee Scheme (CGS), etc. The award is instituted by the Federation of Industry Trade and Services (FITS), which is a national industry body working in the form of a bridge between the industry and the state and central governments."
  	 }
   ]
 }

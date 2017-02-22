@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("your_prefs", MODE_PRIVATE);
         String adTypeString = sp.getString("adType","inmobi");
-        if(adTypeString.contains("appodeal")) {
+
+//        if(adTypeString.contains("appodeal"))
+        {
             String appKey = "6dcfe14a2822b69dc364802ac2c1d81479f642262c221724";
             Appodeal.initialize(this, appKey, Appodeal.BANNER | Appodeal.INTERSTITIAL);
             Appodeal.show(this, Appodeal.BANNER_BOTTOM);

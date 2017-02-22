@@ -1,5 +1,6 @@
 package com.rupik.a5000gkquestionsanswers;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -27,11 +28,20 @@ public class ScoreActivity extends AppCompatActivity {
     ArrayList<MCQItem> mcqDataList;
 
     @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
         Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        Appodeal.show(this, Appodeal.INTERSTITIAL);
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
@@ -42,9 +52,10 @@ public class ScoreActivity extends AppCompatActivity {
         for(int i=0;i<mcqDataList.size();i++)
         {
             MCQItem item = mcqDataList.get(i);
-            if(item.getAnswer().toLowerCase().contains(item.getMockTestUserAnswer().toLowerCase()) && item.getMockTestUserAnswer().length()>0)
-            {
-                score+=1;
+            if(item.getAnswer()!=null && item.getMockTestUserAnswer()!=null) {
+                if (item.getAnswer().toLowerCase().contains(item.getMockTestUserAnswer().toLowerCase()) && item.getMockTestUserAnswer().length() > 0) {
+                    score += 1;
+                }
             }
         }
 
@@ -53,9 +64,10 @@ public class ScoreActivity extends AppCompatActivity {
 
         int totalQuestions = mcqDataList.size();
 
-        int percent = (score/totalQuestions)*100;
+
+        double percent = ((double)score/(double)totalQuestions)*100.0f;
         TextView percentageTextView = (TextView) findViewById(R.id.percentageTextView);
-        percentageTextView.setText("Percentage: " + Integer.toString(percent) + "%" );
+        percentageTextView.setText("Percentage: " + Double.toString(percent) + "%" );
 
         String title = "Quiz Master";
         if(percent<10.0)
@@ -107,6 +119,17 @@ public class ScoreActivity extends AppCompatActivity {
                 bundle.putSerializable("mcqDataList", mcqDataList);
                 i.putExtras(bundle);
                 ScoreActivity.this.startActivity(i);
+            }
+        });
+
+        Button retakeQuizButton = (Button)findViewById(R.id.retakeQuizBtn);
+        retakeQuizButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result","retake");
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
             }
         });
 

@@ -1,5 +1,6 @@
 package com.rupik.a5000gkquestionsanswers;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
@@ -42,6 +43,8 @@ import org.json.JSONObject;
 //https://quarkbackend.com/getfile/sohambhowmik/gk-ad
 public class MCQActivity extends AppCompatActivity {
 
+    static int MOCK_TEST_ACT_REQ_CODE = 101;
+
     ArrayList <MCQItem> mcqDataList;
     int page = 0;
     RevMob revmob;
@@ -72,6 +75,33 @@ public class MCQActivity extends AppCompatActivity {
     String adTypeString;
 
     ArrayList<MCQItem> answersArrayList = new ArrayList<>();
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == MOCK_TEST_ACT_REQ_CODE) {
+            if(resultCode == Activity.RESULT_OK){
+                String result=data.getStringExtra("result");
+                if(result.contains("retake"))
+                {
+                    page = 0;
+                    for(int i=0;i<mcqDataList.size();i++)
+                    {
+                        MCQItem item = mcqDataList.get(i);
+                        item.setMockTestUserAnswer("");
+                    }
+                    displayMCQ(page);
+                }
+                else {
+                    MCQActivity.this.finish();
+                }
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+                MCQActivity.this.finish();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -221,9 +251,8 @@ public class MCQActivity extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("mcqDataList", mcqDataList);
                         i.putExtras(bundle);
-                        MCQActivity.this.startActivity(i);
+                        MCQActivity.this.startActivityForResult(i, MOCK_TEST_ACT_REQ_CODE);
                         //
-
                     }
                 }
                 else {

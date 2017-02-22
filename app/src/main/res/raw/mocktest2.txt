@@ -1,57 +1,57 @@
 {
-  "title":"Mock Test 2 - Feb 21, 2017",
+  "title":"Mock Test 1 - Feb 21, 2017",
   "time":"-1",
   "totalQuestions":"10",
   "questions":[
   	{
-    "Question":"Which of the following ancient Indian Kings had appointed Dhamma Mahamattas?  \n[A] Asoka \n[B] Chandragupta Maurya \n[C] Kanishka \n[D] Chandragupta-II",
+    "Question":"Which state is hosting the 2017 South Asian Speaker’s summit? [A] Madhya Pradesh [B] Himachal Pradesh [C] Andhra Pradesh [D] Kerala",
     "Answer":"A",
-    "AnswerExplained":"Dhamma Mahamattas were special officers appointed by Ashoka to spread the message of Dhamma or his Dharma. The Dhamma Mahamattas were required to look after the welfare of the people of different religions and to enforce the rules regarding the sanctity of animal life."
+    "AnswerExplained":"The two-day South Asian Speaker’s summit has been inaugurated by the Lok Sabha Speaker Sumitra Mahajan at Indore in Madhya Pradesh on February 18, 2017. The summit is organized by the Indian Parlianment and Inter-Parliamentary Union which is focused on Achieving Sustainable Development Goals in member countries. The delegates from legislatures of Afganistan, Bangladesh, Bhutan, India, Maldives, Nepal and Sri Lanka are attending the summit. Representatives from Pakistan and Myanmar are not attending the summit due to their personal reasons."
  	 },
   	{
-    "Question":"Consider the following statements: \n1. Andal was a woman Alvar whose compositions were widely sung. \n2. Karaikkal Ammaiyar was a devotee of Shiva who adopted the path of extreme asceticim in order to attain her goal Which of the above statements is / are correct? \n[A] Only 1 \n[B] Only 2 \n[C] Both 1 & 2 \n[D] Neither 1 nor 2",
+    "Question":"Who has been honoured with the 2017 Brand Laureate Legendary Award? [A] Michael Schumacher [B] Lata Mangeshkar [C] Ratan Tata [D] Mohammad Yunus",
+    "Answer":"B",
+    "AnswerExplained":"Melody Queen Lata Mangeshkar has been honoured with the ‘Legendary Award ‘ 2017 by Brand Laureate. The Brand Laureate Awards recognise world-class achievement in branding amongst individuals and companies. She is known for songs like “Lag jaa gale”, “Aayega aanewala”, “Aye mere watan ke logon”, “Luka chuppi”, and many more."
+ 	 },
+  	{
+    "Question":"Jambuvantrao Dhote, who passed away recently, was the former Member of Parliament (MP) from which Lok Sabha constituency? [A] Nagpur [B] Pune [C] Bhopal [D] Shillong",
+    "Answer":"A",
+    "AnswerExplained":"Bhau Jambhuwantrao Dhote (83), the former Member of Parliament (MP) from Nagpur Lok Sabha constituency, has recently passed away in Yavatmal, Maharashtra. He was known for his demands of a separate state for Vidarbha. Dhote won his first election to Lok Sabha in 1971 from Nagpur as a Forward Bloc nominee. Later in 1980, he joined Congress and won the Nagpur seat on the Congress ticket. After leaving Congress he founded Vidarbha Janta Congress party in 2002. He was elected to Maharashtra Assembly five times. Due to his active participation in various movements for separate Vidarbha and farmers and his aggressive speeches, he was also known as the Lion of Vidarbha."
+ 	 },
+  	{
+    "Question":"Who has been selected for the 2016 Vyas Samman? [A] Vishwanath Tripathi [B] Padma Sachdev [C] Surendra Verma [D] Sunita Jain",
     "Answer":"C",
-    "AnswerExplained":""
+    "AnswerExplained":"Surendra Verma, the well-known Hindi scholar and playwright, has been selected for Vyas Samman 2016 for his novel “Kaatna Shami Ka Vriksha : Padma Pankhuri Ki Dhar Se”. It is awarded annually by the K.K. Birla Foundation and includes a cash payout of Rs 3.50 lakhs. To be eligible for the award, the literary work must be in the Hindi language and have been published in the past 10 years."
  	 },
   	{
-    "Question":"Nābhivarṣa is the historical name of which of the following countries?  \n[A] India \n[B] Myanmar \n[C] China \n[D] Egypt",
-    "Answer":"A",
-    "AnswerExplained":"According to some historical sources, the term Nābhivarṣa was used for India prior to its name Bharatvarsa. The name is derived from King Nabhi, who was father of Rishabhanatha, the first Tirthankara in Jainism."
- 	 },
-  	{
-    "Question":"Apart from Google, which of the following is a correct set of subsidiaries of Alphabet Inc.?  [A] Calico, DeepMind, Nest Labs, Waymo [B] Calico, Softimage, NetCarta, Firefly [C] DeepMind, NestLabs, Instagram, Whatsapp [D] Calico, Instagram, Nest Labs, Waymo",
-    "Answer":"A",
-    "AnswerExplained":"Calico, DeepMind, Nest Labs, Waymo are subsidiaries of Alphabet Inc. whose major subsidiary is Google.  \nSoftimage, NetCarta and Firefly are subsidiaries of Microsoft.  \nInstagram and Whatsapp are subsidiaries of Facebook."
- 	 },
-  	{
-    "Question":"Shares of a company given in exchange for work done are called?  [A] Sweat Equity [B] Preferential Shares [C] Hot equity [D] Secondary Shares",
-    "Answer":"A",
-    "AnswerExplained":"A sweat equity share is an equity share issued by the company to employees or directors at a discount or for consideration other than cash for providing know-how or making available rights in the nature of intellectual property rights or value additions."
- 	 },
-  	{
-    "Question":"Which of the following is / are fund managers for National Pension System (NPS) currently: \nHDFC Pension Fund  \nKotak Pension Fund \nReliance Capital Pension \nSelect the correct option from the codes given below: \n[A] Only 1 \n[B] Only 1 & 2 \n[C] Only 2 & 3 \n[D] 1, 2 & 3",
+    "Question":"Which country to host 2017 ICC Women’s Cricket World Cup? [A] New Zealand [B] India [C] Sri Lanka [D] England",
     "Answer":"D",
-    "AnswerExplained":"At present, there are only seven NPS fund managers viz. HDFC Pension Fund, ICICI Prudential Pension, Kotak Pension Fund, LIC Pension Fund,  Reliance Capital Pension, SBI Pension Fund and UTI Retirement Solutions."
+    "AnswerExplained":"The 11th edition of ICC Women’s Cricket World Cup 2017 will be hosted by England from 24 June to 23 July 2017. Recently, India qualified for Women’s Cricket World Cup 2017 by defeating Bangladesh by 9 wickets in a Super Six match in Colombo, Sri Lanka. Eight teams will qualify to participate in the tournament."
  	 },
   	{
-    "Question":"Consider the following statements about Lassa Fever: \nIts a Viral disease mostly prevalent in Latin American countries \nIts a zoonotic disease that trasnmits from fruit bats to human Which of the above is / are correct statements? \n[A] Only 1 \n[B] Only 2 \n[C] Both 1 & 2 \n[D] Neither 1 nor 2",
+    "Question":"Which Indian personality to host Hindi version of international show “TED Talks”? [A] Salman Kha [B] Priyanka Chopra [C] Shah Rukh Khan [D] Amitabh Bachchan",
+    "Answer":"C",
+    "AnswerExplained":"Bollywood megastar Shah Rukh Khan will host the Hindi version of popular international show “TED Talks”, which is the super-inspiring and super-influential talk series. Star India will air the Indian version “TED Talks India: Nayi Soch” in summer 2017 but a definite telecast date is yet to be announced. This is the first time TED is collaborating with a network and mega-star to produce a TV series featuring original TED Talks in a language other than English."
+ 	 },
+  	{
+    "Question":"Who has become the first Indian ever to be promoted by the International Basketball Federation (FIBA) as Technical Delegate (TD)? [A] Surendra Bhatnagar [B] Norman Isaac [C] Mohd. Rizwan [D] Harikrishna Prasad",
+    "Answer":"B",
+    "AnswerExplained":"Norman Isaac has become the first Indian ever to be promoted by the International Basketball Federation (FIBA) as Technical Delegate (TD). As a TD, Isaac will be assigned to any country except his own and will be responsible for conduct of an entire event, ranging from actual competition management to every related aspect from media arrangements to logistics. Prior to this appointment, he was a FIBA Commissioner."
+ 	 },
+  	{
+    "Question":"Tata Motors has signed pact with which technological giant for connected vehicle technology? [A] Infosys [B] Google [C] Microsoft [D] Wipro",
+    "Answer":"C",
+    "AnswerExplained":"Tata Motors has signed pact with Microsoft India to redefine connected and personalized driving experiences for Indian customers. The purpose of the pact is to provide an enriched mobile experience for its consumers. Tata Motors will leverage Microsoft’s connected vehicle technologies that bring together artificial intelligence (AI), advanced machine learning, and the Internet of Things (IoT) capabilities on the global hyper-scale Azure cloud, to traverse the digital and physical worlds and create a highly personalized, smart and safer driving experience across the digital life of a vehicle owner. The first vehicle developed through this partnership will be unveiled at the 87th Geneva International Motor Show on 7th March 2017."
+ 	 },
+  	{
+    "Question":"Who is the author of the book “Jobless Clueless Reckless”? [A] Suzanne Sangi [B] Munal Pawar [C] Himanjali Sankar [D] Revathi Suresh",
     "Answer":"D",
-    "AnswerExplained":"Lassa fever or Lassa hemorrhagic fever (LHF) is caused by Lassa virus. This disease is mainly prevalent in West Africa countries such as Nigeria, Liberia, Sierra Leone, Guinea, and Ghana. It results in 5000 deaths every year. It’s a zoonotic disease transmits to human from a species of mouse. "
- 	 },
-  	{
-    "Question":"Which of the following countries was recently making news for its experiment of Universal Basic Income (UBI)?  \n[A] Australia \n[B] New Zealand \n[C] Finland \n[D] Poland",
-    "Answer":"C",
-    "AnswerExplained":"In Finland, 2,000 unemployed people are being provided with monetary compensation each month for a span of two years with very little or no preconditions."
- 	 },
-  	{
-    "Question":"Which of the following is not a correct statement with respect to Masala Bonds?  \n[A] They allow Indian companies to raise overseas debts in Indian currency \n[B] Interest Payment on Masala Bonds is in Indian Rupee \n[C] Most popular market for Masala Bonds is New York currently \n[D] All of the above are correct statements",
-    "Answer":"C",
-    "AnswerExplained":"Masala bonds allow Indian companies to raise overseas debt in the Indian currency. The instrument shields the issuers from currency fluctuations mainly because interest payments and redemption is in rupees. At the same time, investors get interest rates that are higher than in their domestic markets. In third statement, the most popular market for Masala bonds currently is London."
+    "AnswerExplained":"The book “Jobless Clueless Reckless” has been authored by Revathi Suresh. It’s a novel about teenagers that gives an insight into what happens in the minds and lives of teenagers in an upper middle class, urban society."
  	 },
   {
-    "Question":"Consider the following schemes: \nMGNREGA \nSansad Aadarsh Gram Yojana \nMPLADS scheme Which of the above is / are based on demand-based approach? \n[A] Only 1 \n[B] Only 1 & 2 \n[C] Only 2 & 3 \n[D] 1, 2 & 3",
+    "Question":"The India Vetiver Network (INVN) has been launched in which state? [A] Kerala [B] Tamil Nadu [C] Karnataka [D] Assam",
     "Answer":"B",
-    "AnswerExplained":"MGNREGA and SAGY are demand driven schemes. MPLADS is not among such schemes."
+    "AnswerExplained":"The India Vetiver Network (INVN) has been launched at Tamil Nadu Agricultural University. The INVN is a not-for-profit scientific network to promote vetiver in India. Vetiver (Indian grass with fragrant root ) has worldwide application to tackle many environmental issues like soil erosion, mitigation of soil and water pollution. The mission of INVN is environmental protection using vetiver."
  	 }
   ]
 }
