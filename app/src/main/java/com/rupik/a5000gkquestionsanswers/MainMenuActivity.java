@@ -53,7 +53,8 @@ public class MainMenuActivity extends AppCompatActivity{
 
     void startDisplayingAds()
     {
-        if(adJsonString.contains("appodeal")) {
+//        if(adJsonString.contains("appodeal"))
+        {
             Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         }
 

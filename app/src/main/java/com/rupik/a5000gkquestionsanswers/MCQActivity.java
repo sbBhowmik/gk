@@ -81,6 +81,7 @@ public class MCQActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("your_prefs", MODE_PRIVATE);
         adTypeString = sp.getString("adType","appodeal");
+        adTypeString = "appodeal";
 
 
         if(adTypeString.contains("appodeal")) {
@@ -155,6 +156,10 @@ public class MCQActivity extends AppCompatActivity {
         }
         else {
             fetchMockTest();
+            Intent intent = this.getIntent();
+            Bundle bundle = intent.getExtras();
+            mcqDataList = (ArrayList<MCQItem>)bundle.getSerializable("mcqDataList");
+            displayMCQ(page);
         }
 
         Button prevMCQQuestionBtn = (Button)findViewById(R.id.prevMCQQuestionBtn);
@@ -172,7 +177,8 @@ public class MCQActivity extends AppCompatActivity {
                 if(revmobCount >= 9)
                 {
                     if(adTypeString.contains("appodeal")) {
-                        Appodeal.show(MCQActivity.this, Appodeal.INTERSTITIAL);
+                        if(!isQuestionsType)
+                            Appodeal.show(MCQActivity.this, Appodeal.INTERSTITIAL);
                         revmobCount = 0;
                     }
                     if(adTypeString.contains("inmobi")) {
@@ -233,7 +239,8 @@ public class MCQActivity extends AppCompatActivity {
                     if(revmobCount >= 9)
                     {
                         if(adTypeString.contains("appodeal")) {
-                            Appodeal.show(MCQActivity.this, Appodeal.INTERSTITIAL);
+                            if(!isQuestionsType)
+                                Appodeal.show(MCQActivity.this, Appodeal.INTERSTITIAL);
                             revmobCount = 0;
                         }
                         if(adTypeString.contains("inmobi")) {

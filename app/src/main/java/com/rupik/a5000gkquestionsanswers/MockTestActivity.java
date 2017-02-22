@@ -1,11 +1,22 @@
 package com.rupik.a5000gkquestionsanswers;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.appodeal.ads.Appodeal;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,10 +43,44 @@ public class MockTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mock_test);
 
-        AsyncTask.execute(new Runnable() {
+        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        if(isConnected) {
+
+            ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBarID);
+            progressBar.setVisibility(View.VISIBLE);
+            TextView progressText = (TextView)findViewById(R.id.progressText);
+            progressText.setVisibility(View.VISIBLE);
+
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    prepareMockTestLists();
+                }
+            });
+        }
+        else {
+            Toast.makeText(this,"Unable to Fetch Data From Server !!! Please Check Your Internet Connection !",Toast.LENGTH_LONG).show();
+        }
+
+        ListView mockTestListView = (ListView) findViewById(R.id.mockTestList);
+        mockTestListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void run() {
-                prepareMockTestLists();
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ArrayList<MCQItem> mcqDataList = mockTestLists.get(i).getMcqItemArrayList();
+                Intent intent = new Intent(MockTestActivity.this, MCQActivity.class);
+                intent.putExtra("isQuestionsType",true);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("mcqDataList", mcqDataList);
+                intent.putExtras(bundle);
+                MockTestActivity.this.startActivity(intent);
             }
         });
 
@@ -252,6 +297,13 @@ public class MockTestActivity extends AppCompatActivity {
     void displayData()
     {
         if(mockTestLists!=null) {
+
+            ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBarID);
+            progressBar.setVisibility(View.GONE);
+            TextView progressText = (TextView)findViewById(R.id.progressText);
+            progressText.setVisibility(View.GONE);
+
+
             ListView mockTestListView = (ListView) findViewById(R.id.mockTestList);
             MockTestListAdapter adapter = new MockTestListAdapter(this, mockTestLists);
             mockTestListView.setAdapter(adapter);
